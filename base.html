@@ -17,31 +17,10 @@
 
     <link rel="stylesheet" type="text/css" href="{% static 'fomanticui/semantic.min.css' %}">
 
-    <!-- Estilos pygmentify -->
-    {% load pygmentify_tags %}
-    <link rel="stylesheet" href="{% pygmentify_css %}">
-
-    <!-- Estilo para el markdown-->
-    {% load martortags %}
-    <link href="{% static 'martor/css/martor.min.css' %}" type="text/css" media="all" rel="stylesheet" />
-
     <!-- Estilo del sitio -->
     <link rel="stylesheet" href="{% static 'dashboard/style.css' %}">
 
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <!-- MathJX -->
-<script>
-MathJax = {
-  tex: {
-    inlineMath: [['$', '$'], ['\\(', '\\)']]
-  }
-};
-</script>
-
-    <script type="text/javascript" id="MathJax-script" async
-            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-    </script>
-
 
     <title>{% block head_title %} Replace this title {% endblock %}  </title>
   </head>
