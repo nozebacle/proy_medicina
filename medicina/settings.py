@@ -95,9 +95,15 @@ ALTERNATIVES = {
 }
 
 DATABASES = {
-    'default': ALTERNATIVES['mysql']
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'djangodatabase',
+        'USER': 'palito',
+        'PASSWORD': '8451002701Ppv!!',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
