@@ -6,7 +6,6 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    {% load static %}
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="{% static 'semanticui/semantic.min.js' %}"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'semanticui/semantic.min.css' %}">
@@ -34,7 +33,7 @@
   .main.container {
     margin-top: 7em;
   }
-  
+
     .image {
         margin-top: 100px;
     }
@@ -87,23 +86,17 @@
 
  <div class="ui main container">
   <div class="ui grid">
-     <div  class="five wide centered column">    
+     <div  class="five wide centered column">
         <h2 class="teal">Bienvenido a proy_medicina</h2>
-            <p>proy_medicina es una herramienta de calificación y seguimiento 
+            <p>proy_medicina es una herramienta de calificación y seguimiento
             para los estudiantes de Medicina de la Universidad de los Andes.</p>
-            
-            <p>proy_medicina está actualmente en construcción. 
+
+            <p>proy_medicina está actualmente en construcción.
             Sus comentarios son muy valiosos para hacer de esta la mejor herramienta posible.</p>
-           
+
      </div>
      <div class="eight wide centered column">
-     
-                 {% if mensaje %}
-            <div class="ui error message">
-                {{ mensaje }}
-            </div>
-            {% endif %}
-            <form class="ui large form" action="/login/" method="POST"> {% csrf_token %}
+            <form class="ui large form" action="/login/" method="POST">
                 <div class="ui stacked segment">
                     <div class="field">
                         <div class="ui left icon input">
@@ -118,39 +111,29 @@
                         </div>
                     </div>
                     <div class="ui fluid large teal submit button">Entrar</div>
+                    <br>
                 </div>
                 <div class="ui error message"></div>
             </form>
-     
-     </div>     
-     
-          <div  class="three wide centered column">
-        <!-- <img class="logo" src="/image/Seneca_singotto.png" width="250" />. -->     
+
      </div>
 
-     
-  </div>
-  
+          <div  class="three wide centered column">
+        <!-- <img class="logo" src="/image/Seneca_singotto.png" width="250" />. -->
+     </div>
 
-   
-   </div> 
-    
-    
+
+  </div>
+
+
+
+   </div>
+
+
     <div class="Site-footer ui inverted footer black segment">
         <div class="ui container">
             <div class="ui center aligned container">
                 <div id="websis-icon" class="social-icons">
-                    <ul class="websis SENECODE">
-                        <!--<li class="social-Cupi2"><a href="http://cupi2.uniandes.edu.co/" target="_blank" rel="noopener noreferrer">DIOA</a></li> -->
-                        <li class="social-Econtinuada"><a href="https://educacioncontinuada.uniandes.edu.co/" target="_blank" rel="noopener noreferrer">DIOA</a></li>
-                        <!--<li class="social-Labs"><a href="https://laboratorios.virtual.uniandes.edu.co/" target="_blank" rel="noopener noreferrer">DIOA</a></li>
-                        <li class="social-Mujeres"><a href="https://sistemas.uniandes.edu.co/mujeresencomputacion" target="_blank" rel="noopener noreferrer">DIOA</a></li>
-                        <li class="social-Rincon"><a href="https://sistemas.uniandes.edu.co/es/isis" target="_blank" rel="noopener noreferrer">DIOA</a></li>
-                        <li class="social-sisinfo"><a href="http://sisinfo.uniandes.edu.co/" target="_blank" rel="noopener noreferrer">DIOA</a></li> -->
-                        <li class="social-Publica"><a href="https://medicina.uniandes.edu.co" target="_blank" rel="noopener noreferrer">DIOA</a></li>
-                        <li class="social-Conflicto"><a href="https://sch.uniandes.edu.co/" target="_blank" rel="noopener noreferrer">DIOA</a></li>
-                        <li class="social-Forosisis"><a href="https://sistemas.uniandes.edu.co/es/foros-isis" target="_blank" rel="noopener noreferrer">DIOA</a></li>
-                    </ul>
                 </div>
             </div>
             <div class="ui center aligned container">
