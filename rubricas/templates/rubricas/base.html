@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    {% load static %}
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" />
+
+    <!-- Semantic-UI -->
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"></script>
+    <script src="{% static 'fomanticui/semantic.min.js' %}"></script>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'fomanticui/semantic.min.css' %}">
+
+    <!-- Estilo del sitio -->
+    <link rel="stylesheet" href="{% static 'dashboard/style.css' %}">
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <title>{% block head_title %} Replace this title {% endblock %}  </title>
+  </head>
+  <body class="Site">
+
+    <div class="Site-content ui main container">
+        {% block content%}
+           Replace this ....
+        {% endblock %}
+    </div>
+
+
+  </body>
+</html>
