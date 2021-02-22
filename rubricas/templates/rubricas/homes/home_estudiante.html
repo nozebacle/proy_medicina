@@ -1,1 +1,137 @@
-asdf
+{% extends "base.html" %}
+
+{% block head_title %}
+Proy_medicina - Home
+{% endblock %}
+
+{% block content %}
+{% load humanize %}
+<div class="ui grid stackable">
+  <div class="two column row">
+    <div class="column">
+        <div class="ui raised card fluid">
+            <div class="content">
+                <div class="right floated meta"><a href="{% url 'envios' %}"Ver todos</a></div>
+                <div class="header">Env&iacute;os recientes</div>
+            </div>
+            <div class="ui content">
+            {% for envio in envios_cortados %}
+                {% include 'dashboard/bloques/envio-inline.html' with envio=envio mostrar_problema=True %}
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="column">
+        <div class="ui raised card fluid">
+            <div class="content">
+                <div class="right floated meta"><a href="{% url 'notificaciones' %}">Ver todas</a></div>
+                <div class="header">Notificaciones recientes</div>
+            </div>
+            <div class="content">
+            {% if not notificaciones_cortadas %}
+                No hay notificaciones sin leer
+            {% endif %}
+            {% for notificacion in notificaciones_cortadas %}
+                <div class="ui tiny">
+                <i class="hand point right outline icon"></i> {{ notificacion.timestamp|naturaltime }}</div>
+                {% if notificacion.link %}
+                <a href="{{ notificacion.link }}">
+                    {{ notificacion.resumen|truncatewords:10 }}
+                </a>
+                {% else %}
+                    {{ notificacion.resumen|truncatewords:10 }}
+                {% endif %}
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <div class="two column row">
+    <div class="column">
+        <div class="ui raised card fluid">
+            <div class="content">
+                <div class="right floated meta"><a href="{% url 'tareas' %}">Ver todas</a></div>
+                <div class="header">Tareas recientes</div>
+            </div>
+            <div class="content">
+            {% if not lista_tareas %}
+                No hay tareas para ver
+            {% endif %}
+
+            {% for tarea, resultado_tarea in lista_tareas %}
+                {% include 'dashboard/bloques/tarea-inline.html' with tarea=tarea resultado_tarea=resultado_tarea %}
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="column">
+        <div class="ui raised card fluid">
+            <div class="content">
+                <div class="right floated meta"><a href="{% url 'mis_estadisticas' %}">Ver todas</a></div>
+                <div class="header">Estadísticas</div>
+            </div>
+            <div class="content">
+              <div class="ui tiny three statistics">
+                <div class=" statistic">
+                      <div class="label">
+                        Problemas resueltos
+                      </div>
+                      <div class="value">
+                        {{ estadisticas.resueltos }}
+                      </div>
+                  </div>
+                  <div class=" statistic">
+                      <div class="label">
+                        Intentos
+                      </div>
+                      <div class="value">
+                        {{ estadisticas.intentos }}
+                      </div>
+                  </div>
+                  <div class=" statistic">
+                      <div class="label">
+                        Tasa de éxito
+                      </div>
+                      <div class="value">
+                        {{ estadisticas.tasa }}
+                      </div>
+                  </div>
+            </div>
+            </div>
+            <div class="content">
+            <div class="ui tiny three statistics">
+                <div class=" statistic">
+                      <div class="label">
+                        Puntos totales
+                      </div>
+                      <div class="value">
+                        {{ estudiante.puntos }}
+                      </div>
+                  </div>
+                  <div class=" statistic">
+                      <div class="label">
+                        Medallas
+                      </div>
+                      <div class="value">
+                        {{ estudiante.medallas }}
+                      </div>
+                  </div>
+                  <div class=" statistic">
+                      <div class="label">
+                        Respuestas
+                      </div>
+                      <div class="value">
+                        {{ estadisticas.respuestas }}
+                      </div>
+                  </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

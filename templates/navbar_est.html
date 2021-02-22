@@ -1,0 +1,74 @@
+<div class="ui fixed inverted black menu">
+   <div class="ui container">
+     <a href="/home" class="header item">
+       <img class="logo" width="90px" src="/image/logo.png">
+       <i class="icon home"></i>
+     </a>
+
+
+     <div class="ui simple dropdown item">
+       <a href="{% url 'problemas' %}"><i class="cogs icon"></i>Cursos</a>
+       <div class="menu">
+         <a class="item" href="{% url 'buscar_problemas' %}">Calificaciones</a>
+       </div>
+     </div>
+
+     <div class="ui simple dropdown item">
+       <a href="{% url 'tareas' %}"><i class="calendar check outline icon"></i>Habilidades</a>
+       <div class="menu">
+         <a class="item" href="{% url 'tareas_pendientes' %}"><i class="hourglass half icon"></i>Metacompetencias</a>
+         <a class="item" href="{% url 'tareas' %}"><i class="calendar alternate outline icon"></i>Notas</a>
+       </div>
+     </div>
+
+
+     <div class="ui simple dropdown item">
+       <a href="{% url 'envios' %}"><i class="upload icon"></i>Configuraciones</a>
+       <div class="menu">
+         <a class="item" href="{% url 'envios_pendientes' %}">Cursos</a>
+         <a class="item" href="{% url 'envios_exitosos' %}">Perfil</a>
+       </div>
+     </div>
+
+     <div class="ui simple dropdown item">
+       <i class="question circle outline icon"></i>Ayuda
+       <div class="menu">
+         <a class="item" href="{% url 'tutorial' %}">Tutorial</a>
+         <a class="item" href="{% url 'faq' %}">Preguntas frecuentes</a>
+       </div>
+     </div>
+
+
+<!--
+     <div class="ui simple dropdown item">
+       <i class="trophy icon"></i>Estadísticas
+       <div class="menu">
+         <a class="item" href="{% url 'mis_estadisticas' %}"><i class="signal icon"></i>Estadísticas del estudiante</a>
+         <a class="item" href="{% url 'medallas' %}"><i class="trophy icon"></i>Medallas</a>
+       </div>
+     </div>
+-->
+
+     <div class="ui right item grid">
+
+         {% include 'menu_notificaciones.html' %}
+
+         <div class="ui item simple dropdown right item">
+           <div class="ui grid">
+               <div class=""  style="padding-left: 0.5em; padding-right: 0em;">
+                   <div class="ui right aligned">{{ puntos }} pts</div>
+                   <div class="ui right aligned">{{ num_medallas }} M</div>
+               </div>
+               <div class="ui right aligned  image">
+                   <img class="logo" style="width:30px;height:30px;" src="/image/{{ imagen_avatar }}" />
+               </div>
+           </div>
+           <div class="menu">
+             <a class="item" href="{% url 'perfil' %}"><i class="id badge outline icon"></i>Mi perfil</a>
+             <a class="item" href="{% url 'logout' %}"><i class="sign-out icon"></i>Salir</a>
+           </div>
+         </div>
+        </div>
+
+   </div>
+ </div>

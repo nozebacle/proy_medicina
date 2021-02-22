@@ -1,20 +1,19 @@
 import os
-import dashboard.locale_bogota as local
 import datetime
 from django.conf import settings
 from django.shortcuts import render
 
-from rubricas.models.usuarios import Usuario, Estudiante, Profesor, Monitor, Coordinador
-from dashboard.constantes import PROFESOR, ESTUDIANTE, MONITOR, ADMINISTRADOR, COORDINADOR, SEMESTRE_ACTUAL
+#from rubricas.models.usuarios import Usuario, Estudiante, Profesor, Monitor, Coordinador
+from rubricas.constantes import PROFESOR, ESTUDIANTE, MONITOR, ADMINISTRADOR, COORDINADOR, SEMESTRE_ACTUAL
 
 def render_page(request, template_name, context):
-    usuario = reconstruir_usuario(request)
-    pendientes = Notificacion.buscar_notificaciones_pendientes_usuario(usuario.id)
+    #usuario = reconstruir_usuario(request)
+    #pendientes = Notificacion.buscar_notificaciones_pendientes_usuario(usuario.id)
 
-    git_commit = os.popen("git show --oneline -s").read()
-    context["version"] = settings.VERSION + "/" + git_commit[: git_commit.find(" ")]
+    #git_commit = os.popen("git show --oneline -s").read()
+    #context["version"] = settings.VERSION + "/" + git_commit[: git_commit.find(" ")]
 
-    context["id_usuario"] = usuario.id
+    #context["id_usuario"] = usuario.id
     #  actualizar el tiempo de la última acción del usuario ... para no dejar vencer la sesión
 
     return render(request, template_name, context)
@@ -28,7 +27,7 @@ def seleccionar_menu(tipo_usuario: str) -> str:
         tipo_usuario: El tipo del usuario que requiere un menú
     Retorno:
         (str): El nombre de la plantilla con el menú para el usuario
-    """
+
     menu = "none"
     if tipo_usuario == PROFESOR:
         menu = "navbarprof"
@@ -38,11 +37,11 @@ def seleccionar_menu(tipo_usuario: str) -> str:
         menu = "navbarmonitor"
     elif tipo_usuario == ADMINISTRADOR:
         menu = "navbaradmin"
-    elif tipo_usuario == COORDINADOR
+    elif tipo_usuario == COORDINADOR:
         menu = "navbarracoord"
 
     return menu + ".html"
-
+    """
 
 def reconstruir_usuario(request):
     if "usuario" not in request.session:
