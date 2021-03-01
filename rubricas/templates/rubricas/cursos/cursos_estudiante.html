@@ -1,0 +1,102 @@
+{% extends "rubricas/base.html" %}
+<!-- Implementación visualizaciones -->
+<!-- Fin Implementación visualizaciones -->
+
+{% block head_title %}
+Proy_medicina - Cursos
+{% endblock %}
+
+{% block content %}
+
+{% load humanize %}
+<div class="ui large header">
+Cursos
+</div>
+
+<a class="ui image label">
+  <img src="/image/kim.jpg" />
+</a>
+
+<ol>
+<li>Estudiantes</li>
+<li>Envíos</li>
+<li>Problemas</li>
+</ol>
+
+<div class="ui header" id="estudiantes">
+Mis cursos actuales
+</div>
+
+<table class="ui celled center top aligned  table">
+  <thead>
+    <tr>
+      <th class="left aligned">Nombre</th>
+      <th>Puntos</th>
+      <!--<th>Medallas</th>-->
+      <th>Actividad</th>
+      <th>Puntos</th>
+      <th>Resueltos / Intentos</th>
+      <th>Efectividad</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+<div class="ui header" id="envios">
+Etiquetas
+</div>
+
+<ol>
+<li>Estudiantes</li>
+<li>Envíos</li>
+<li>Problemas</li>
+</ol>
+
+
+<!-- Implementación visualizaciones -->
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<!-- Fin Implementación visualizaciones -->
+
+
+<table class="ui celled center aligned  table">
+  <thead>
+    <tr>
+      <th class="left aligned">Etiqueta</th>
+      <th>No. problemas diferentes</th>
+      <th>Envíos:<p> Exitosos/ Totales</p></th>
+      <th>Efectividad <p>(intentos exitosos / intentos totales)</p></th>
+    </tr>
+  </thead>
+  <tbody>
+
+  </tbody>
+</table>
+
+<div class="ui header" id="problemas">
+Problemas
+</div>
+
+<ol>
+<li>Estudiantes</li>
+<li>Envíos</li>
+<li>Problemas</li>
+</ol>
+
+
+<table class="ui celled center aligned  table">
+  <thead>
+    <tr>
+      <th class="left aligned">Título</th>
+      <th class="center aligned">No. estudiantes: <p> exitosos / diferentes</p> </th>
+      <th>Envíos:<p> Exitosos/ Totales</p></th>
+      <th>Efectividad</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+
+{% endblock %}

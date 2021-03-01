@@ -16,6 +16,8 @@ def render_page(request, template_name, context):
     #context["id_usuario"] = usuario.id
     #  actualizar el tiempo de la última acción del usuario ... para no dejar vencer la sesión
 
+    context["menu"] = seleccionar_menu(None)
+
     return render(request, template_name, context)
 
 
@@ -42,6 +44,7 @@ def seleccionar_menu(tipo_usuario: str) -> str:
 
     return menu + ".html"
     """
+    return "rubricas/homes/navbar_estudiante.html"
 
 def reconstruir_usuario(request):
     if "usuario" not in request.session:
