@@ -12,9 +12,12 @@ Proy_medicina - Home
         <div class="ui raised card fluid">
             <div class="content">
                 <div class="right floated meta">Ver todos</div>
-                <div class="header">Env&iacute;os recientes</div>
+                <div class="header">Calificaciones añadidas</div>
             </div>
             <div class="ui content">
+            {% if not envios_cortados %}
+                No hay calificaciones añadidas recientemente
+            {% endif %}
             {% for envio in envios_cortados %}
                 {% include 'dashboard/bloques/envio-inline.html' with envio=envio mostrar_problema=True %}
             {% endfor %}
@@ -48,90 +51,25 @@ Proy_medicina - Home
     </div>
   </div>
 
-  <div class="two column row">
+  <div class="column row">
     <div class="column">
         <div class="ui raised card fluid">
             <div class="content">
                 <div class="right floated meta">Ver todas</div>
-                <div class="header">Tareas recientes</div>
+                <div class="header">Metacompetencias actualizadas</div>
             </div>
             <div class="content">
             {% if not lista_tareas %}
-                No hay tareas para ver
+                No hay metacompetencias actualizadas recientemente
             {% endif %}
 
             {% for tarea, resultado_tarea in lista_tareas %}
                 {% include 'dashboard/bloques/tarea-inline.html' with tarea=tarea resultado_tarea=resultado_tarea %}
             {% endfor %}
-            </div>
-        </div>
+           </div>
+         </div>
+       </div>
     </div>
-    <div class="column">
-        <div class="ui raised card fluid">
-            <div class="content">
-                <div class="right floated meta">Ver todas</div>
-                <div class="header">Estadísticas</div>
-            </div>
-            <div class="content">
-              <div class="ui tiny three statistics">
-                <div class=" statistic">
-                      <div class="label">
-                        Problemas resueltos
-                      </div>
-                      <div class="value">
-                        {{ estadisticas.resueltos }}
-                      </div>
-                  </div>
-                  <div class=" statistic">
-                      <div class="label">
-                        Intentos
-                      </div>
-                      <div class="value">
-                        {{ estadisticas.intentos }}
-                      </div>
-                  </div>
-                  <div class=" statistic">
-                      <div class="label">
-                        Tasa de éxito
-                      </div>
-                      <div class="value">
-                        {{ estadisticas.tasa }}
-                      </div>
-                  </div>
-            </div>
-            </div>
-            <div class="content">
-            <div class="ui tiny three statistics">
-                <div class=" statistic">
-                      <div class="label">
-                        Puntos totales
-                      </div>
-                      <div class="value">
-                        {{ estudiante.puntos }}
-                      </div>
-                  </div>
-                  <div class=" statistic">
-                      <div class="label">
-                        Medallas
-                      </div>
-                      <div class="value">
-                        {{ estudiante.medallas }}
-                      </div>
-                  </div>
-                  <div class=" statistic">
-                      <div class="label">
-                        Respuestas
-                      </div>
-                      <div class="value">
-                        {{ estadisticas.respuestas }}
-                      </div>
-                  </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-  </div>
 </div>
 
 {% endblock %}

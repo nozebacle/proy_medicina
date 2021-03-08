@@ -9,94 +9,48 @@ Proy_medicina - Cursos
 {% block content %}
 
 {% load humanize %}
-<div class="ui large header">
-Cursos
-</div>
 
-<a class="ui image label">
-  <img src="/image/kim.jpg" />
-</a>
+<div class="ui grid stackable">
+  <div class="two column row">
 
-<ol>
-<li>Estudiantes</li>
-<li>Envíos</li>
-<li>Problemas</li>
-</ol>
+    <div class="column">
+        <div class="ui raised card fluid">
+            <div class="content">
+                <div class="header">Cursos actuales</div>
+            </div>
+            <div class="ui content">
+            <ul>
+            <li>Medicina Social - MEDI 2301</li>
+            <li>Otorrinolaringología - MEDI 3431</li>
+            <li>Parasitología Médica - MEDI - 2301</li>
+            <li>Sistema Mucocutáneo - MEDI 2311</li>
+            <li>Sistema Osteomuscular - MEDI 1230</li>
+            </ul>
+            </div>
+        </div>
+    </div>
 
-<div class="ui header" id="estudiantes">
-Mis cursos actuales
-</div>
-
-<table class="ui celled center top aligned  table">
-  <thead>
-    <tr>
-      <th class="left aligned">Nombre</th>
-      <th>Puntos</th>
-      <!--<th>Medallas</th>-->
-      <th>Actividad</th>
-      <th>Puntos</th>
-      <th>Resueltos / Intentos</th>
-      <th>Efectividad</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-  </tbody>
-</table>
-
-<div class="ui header" id="envios">
-Etiquetas
-</div>
-
-<ol>
-<li>Estudiantes</li>
-<li>Envíos</li>
-<li>Problemas</li>
-</ol>
-
-
-<!-- Implementación visualizaciones -->
-<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-<!-- Fin Implementación visualizaciones -->
-
-
-<table class="ui celled center aligned  table">
-  <thead>
-    <tr>
-      <th class="left aligned">Etiqueta</th>
-      <th>No. problemas diferentes</th>
-      <th>Envíos:<p> Exitosos/ Totales</p></th>
-      <th>Efectividad <p>(intentos exitosos / intentos totales)</p></th>
-    </tr>
-  </thead>
-  <tbody>
-
-  </tbody>
-</table>
-
-<div class="ui header" id="problemas">
-Problemas
-</div>
-
-<ol>
-<li>Estudiantes</li>
-<li>Envíos</li>
-<li>Problemas</li>
-</ol>
-
-
-<table class="ui celled center aligned  table">
-  <thead>
-    <tr>
-      <th class="left aligned">Título</th>
-      <th class="center aligned">No. estudiantes: <p> exitosos / diferentes</p> </th>
-      <th>Envíos:<p> Exitosos/ Totales</p></th>
-      <th>Efectividad</th>
-    </tr>
-  </thead>
-  <tbody>
-  </tbody>
-</table>
-
+    <div class="column">
+        <div class="ui raised card fluid">
+            <div class="content">
+                <div class="header">Cursos pasados</div>
+            </div>
+            <div class="content">
+              <ul>
+              <li>Anatomía II - MEDI 1203</li>
+              <li>Biología Molecular-Teoría - MBIO 2102</li>
+              <li>Embriología - MEDI 1208</li>
+              <li>Fisiología - MEDI 1211</li>
+              <li>Habilidades de Comunicación I - MEDI 1102</li>
+              <li>Historia de la medicina - MEDI 1021</li>
+              <li>Introducción a la Profesión Médica - MEDI 1101</li>
+              <li>Patología - MEDI 1216</li>
+              <li>Química orgánica - QUIM 1301</li>
+              <li>Semiología I - MEDI 1208</li>
+              </ul>
+            </div>
+        </div>
+    </div>
+  </div>
 
 {% endblock %}
