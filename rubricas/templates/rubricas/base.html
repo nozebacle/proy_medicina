@@ -24,14 +24,19 @@
 
     <title>{% block head_title %} Replace this title {% endblock %}  </title>
   </head>
-  <body class="Site">
+  <body>
 
-    {% include menu %}
-    <div class="Site-content ui main container">
-        {% block content%}
+        {% include menu %}
+
+        <div class="pusher">
+
+        <div class="ui Site-content main container">
+		{% block content%}
            Replace this ....
-        {% endblock %}
-    </div>
+        {% endblock %} 
+        </div>
+        </div>
+        
 
   </body>
 </html>
