@@ -1,0 +1,105 @@
+{% extends "rubricas/base.html" %}
+<!-- Implementación visualizaciones -->
+<!-- Fin Implementación visualizaciones -->
+
+{% block head_title %}
+Proy_medicina - Curso específico
+{% endblock %}
+
+{% block content %}
+
+{% load humanize %}
+<head>
+<style type="text/css">
+body {
+  background-color: #FFFFFF;
+}
+.ui.menu .item img.logo {
+  margin-right: 1.5em;
+}
+.main.container {
+  margin-top: 7em;
+}
+.wireframe {
+  margin-top: 2em;
+}
+.ui.footer.segment {
+  margin: 5em 0em 0em;
+  padding: 5em 0em;
+}
+</style>
+</head>
+
+<body>
+  <h1 class="ui header">Rúbrica de Enfermería Piso (Semana 1)</h1>
+  <br>
+
+  <table class="ui striped celled table">
+    <thead>
+      <tr>
+        <th>Criterios</th>
+        <th>No lo observó</th>
+        <th>No está preparado</th>
+        <th>Aceptable</th>
+        <th>Lo hace bien</th>
+        <th>Ejemplar</th>
+      </tr>
+    </thead>
+    <thead>
+      <tr>
+        <th> </th>
+        <th>1 puntos</th>
+        <th>2 puntos</th>
+        <th>3 puntos</th>
+        <th>4 puntos</th>
+        <th>5 punto</th>
+      </tr>
+    </thead>
+  <tbody>
+    <tr>
+      <td><strong>Hace una historia clínica completa y detallada del paciente pediátrico. Identifica y prioriza los diagnósticos diferenciales, conoce y usa adecuadamente las pruebas diagnosticas indicadas.</strong></td>
+      <td> </td>
+      <td>Información es insuficiente o exhaustiva. A veces omite datos relevantes o se desvía del problema principal. El examen físico es incompleto u omite detalles relevantes para el problema principal.</td>
+      <td>La información es completa, cronológica y estructurada, describe el estado del paciente y los hallazgos principales. Conoce e interpreta las pruebas diagnosticas esenciales. Tiene en cuenta riesgos, beneficios y las preferencias del paciente.</td>
+      <td> </td>
+      <td class="blue">La información es completa, cronológica y estructurada, describe el estado del paciente y los hallazgos principales, hace un plan de estudio razonado, coherente. Conoce, prioriza e interpreta las pruebas diagnosticas, las usa para el diagnostico, gravedad y seguimiento. Tiene en cuenta riesgos, beneficios y las preferencias del paciente.</td>
+    </tr>
+    <tr class="disabled">
+      <td><strong>Toma valores antropométricos, analiza percentil; valora el estado nutricional, la alimentación, salud bucal los hábitos y practica, hace evaluación ocular, auditiva, identificación sexual.</strong></td>
+      <td> </td>
+      <td>Falla en la evaluación de valores antropométricos y percentil. No tiene en cuenta o es incompleta la valoración del estado nutricional, la alimentación, salud bucal, ocular, auditiva, identificación sexual.</td>
+      <td>Tiene en cuenta valores antropométricos, analiza percentil; hace una valoración aceptable del estado nutricional, la alimentación, salud boca, ocular, auditiva, identificación sexual.</td>
+      <td> </td>
+      <td>Toma valores antropométricos, analiza percentil; valora el estado de salud: nutricional, la alimentación, salud bucal los hábitos y practica, hace evaluación ocular (movimiento, fijación, etc.), auditiva, identificación sexual.</td>
+    </tr>
+    <tr>
+      <td><strong>Evalúa la conformación y dinámica familiar, situaciones de vulnerabilidad. Busca e identifica señales de stress, ansiedad, depresión, riesgo de violencia, maltrato, uso de tabaco, sustancias sicoactivas. Maneja situaciones de riesgo, educa, remite para apoyar.</strong></td>
+      <td> </td>
+      <td>No tiene en cuenta la conformación y dinámica familiar. No identifica o no tiene en cuenta situaciones de stress, ansiedad, depresión, riesgo de violencia, maltrato, uso de tabaco, sustancias sicoactivas.</td>
+      <td class="blue">Evalúa la conformación y dinámica familiar. Identifica señales de stress, ansiedad, depresión, riesgo de violencia, maltrato, uso de tabaco, substancias.
+      <td> </td>
+      <td>Evalúa la conformación y dinámica familiar, situaciones de vulnerabilidad. Busca e identifica señales de stress, ansiedad, depresión, riesgo de violencia, maltrato, uso de tabaco, sustancias sicoactivas. Maneja situaciones de riesgo, educa, remite para apoyar.</td>
+    </tr>
+    <tr>
+      <td><strong>El residente demuestra capacidad para diagnosticar y manejar adecuadamente las enfermedades y situaciones clínicas frecuentes de la rotación. Reconoce sus limitaciones y solicita ayuda.</strong></td>
+      <td> </td>
+      <td>Falla en los conocimientos para establecer tratamiento de las enfermedades frecuentes, o se basa exclusivamente en el manejo farmacológico, no involucra los conceptos de atención integral, promoción, prevención y rehabilitación.</td>
+      <td>Establece tratamientos con base en las guías de manejo, a veces tiene problemas para adaptarlas a las particularidades y preferencias del paciente (edad, alergias, enfermedades, interacciones, riesgos). A veces no incluye conceptos de promoción, prevención y rehabilitación o no asegura la continuidad de la atención.</td>
+      <td class="blue"> </td>
+      <td>Sintetiza información y establece tratamiento integral, incluido promoción y prevención, con base en los conocimientos y guías de manejo. tiene en cuenta las redes de apoyo, preferencias y características del paciente (edad, alergias, enfermedades, interacciones,riesgos). Coordina manejo interdisciplinario y asegura la continuidad de la atención. Valora riesgo/beneficio y costos.</td>
+    </tr>
+    <tr>
+      <td><strong>Se comunica adecuadamente con el paciente y familia, educa y orienta sobre el cuidado, crianza, recreación, actividad física, alimentación, salud oral, sexualidad, vacunación, etc.</strong></td>
+      <td> </td>
+      <td class="blue">Tiene dificultad para establecer relaciones profesionales y orienta al paciente y familia.</td>
+      <td>Establece relaciones profesionales de confianza y respeto, orienta aceptablemente al paciente y familia sobre el cuidado, crianza, recreación, actividad física, alimentación, salud oral, sexualidad, vacunación, etc.</td>
+      <td> </td>
+      <td>Se comunica, escucha, educa, y orienta positivamente al paciente y familia sobre el cuidado, crianza, recreación, actividad física, alimentación, salud oral, sexualidad, vacunación, etc. Verifica la comprensión.</td>
+    </tr>
+  </tbody>
+  </table>
+
+  </body>
+</html>
+
+{% endblock %}
