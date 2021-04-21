@@ -10,398 +10,333 @@ Proy_medicina - Curso específico
 
 {% load humanize %}
 <head>
-<style type="text/css">
-body {
-  background-color: #FFFFFF;
-}
-.ui.menu .item img.logo {
-  margin-right: 1.5em;
-}
-.main.container {
-  margin-top: 7em;
-}
-.wireframe {
-  margin-top: 2em;
-}
-.ui.footer.segment {
-  margin: 5em 0em 0em;
-  padding: 5em 0em;
-}
-</style>
+  <style type="text/css">
+    body {
+      background-color: #FFFFFF;
+    }
+    .ui.menu .item img.logo {
+      margin-right: 1.5em;
+    }
+    .main.container {
+      margin-top: 7em;
+    }
+    .wireframe {
+      margin-top: 2em;
+    }
+    .ui.footer.segment {
+      margin: 5em 0em 0em;
+      padding: 5em 0em;
+    }
+  </style>
 </head>
 
 <body>
   <h1 class="ui header">Otorrinolaringología - MEDI 3431</h1>
   <br>
 
-  <button class="huge ui button">
-  APEs
-  </button>
-  <button class="huge ui button">
-  Competencias
-  </button>
+  <div class="ui styled fluid accordion">
+    <div class="title">
+      <i class="dropdown icon"></i>
+      APEs evaluadas
+    </div>
+    <div class="content">
 
-  <h2 class="ui header">Rúbricas</h1>
+      <table class="ui very basic collapsing celled table">
 
-  <div class="ui top attached tabular menu">
-    <a class="active item" data-tab="genericas">Genéricas</a>
-    <a class="item" data-tab="calificadas">Calificadas</a>
-  </div>
-  <div class="ui bottom attached active tab segment" data-tab="genericas">
-    <div class="ui grid">
+        <tbody>
+          <tr>
+            <td>
+              APE 1
+            </td>
+            <td>
+              Historia clínica
+            </td>
+          </tr>
+          <tr>
+            <td>
+              APE 4
+            </td>
+            <td>
+              Tratamiento de enfermedades
+            </td>
+          </tr>
+          <tr>
+            <td>
+              APE 7
+            </td>
+            <td>
+              Procedimientos básicos
+            </td>
+          </tr>
+          <tr>
+            <td>
+              APE 12
+            </td>
+            <td>
+              Identifica urgencias
+            </td>
+          </tr>
+          <tr>
+            <td>
+              APE 14
+            </td>
+            <td>
+              Soporte vital avanzado
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-  <div class="eight wide column">
-    <div class="ui grid">
-      <div class="ui row top attached ">
-        <i class="icon blue asterisk"> </i>
-        <a href="/cursos/rubrica_g/" target="_blank">Enfermería Piso</a>
-      </div>
+    </div>
+    <div class="title">
+      <i class="dropdown icon"></i>
+      Competencias
+    </div>
+    <div class="content">
+        <table class="ui very basic collapsing celled table">
+          <thead>
+            <tr>
+              <th style='text-align:center;' >Área</th>
+              <th style='text-align:center;'>Código</th>
+              <th style='text-align:center;'>Nombre</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td rowspan="2">
+                Conocimientos
+              </td>
+              <td style='text-align:center;'>
+                CPP1
+              </td>
+              <td>
+                Conocimiento ciencias básicas
+              </td>
+            </tr>
+
+            <tr>
+              <td style='text-align:center;'>
+                CPP4
+              </td>
+              <td>
+                Conocimiento bases fisiológicas
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                Comunicación
+              </td>
+              <td style='text-align:center;'>
+                C7
+              </td>
+              <td>
+                Historia e informes escritos
+              </td>
+            </tr>
+
+            <tr>
+              <td rowspan="3">
+                Profesionalismo
+              </td>
+              <td style='text-align:center;'>
+                EP1
+              </td>
+              <td>
+                Desarrolla relación humana
+              </td>
+            </tr>
+
+            <tr>
+              <td style='text-align:center;'>
+                EP3
+              </td>
+              <td>
+                Desarrolla práctica médica
+              </td>
+            </tr>
+
+            <tr>
+              <td style='text-align:center;'>
+                EP4
+              </td>
+              <td>
+                Actúa de forma honesta
+              </td>
+            </tr>
+          </tbody>
+        </table>
     </div>
   </div>
 
-  <div class="eight wide column">
-    <div class="ui grid">
-      <div class="ui row top attached ">
-        <i class="icon blue asterisk"> </i>
-        <a href="/cursos/rubrica_g/" target="_blank">Consulta Observada</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="eight wide column">
-    <div class="ui grid">
-      <div class="ui row top attached ">
-        <i class="icon blue asterisk"> </i>
-        <a href="/cursos/rubrica_g/" target="_blank">Desempeño Piso</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="eight wide column">
-    <div class="ui grid">
-      <div class="ui row top attached ">
-        <i class="icon blue asterisk"> </i>
-        <a href="/cursos/rubrica_g/" target="_blank">Revista Observada</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="eight wide column">
-    <div class="ui grid">
-      <div class="ui row top attached ">
-        <i class="icon blue asterisk"> </i>
-        <a href="/cursos/rubrica_g/" target="_blank">Revista Piso</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="eight wide column">
-    <div class="ui grid">
-      <div class="ui row top attached ">
-        <i class="icon blue asterisk"> </i>
-        <a href="/cursos/rubrica_g/" target="_blank">Rotación Consulta</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="eight wide column">
-    <div class="ui grid">
-      <div class="ui row top attached ">
-        <i class="icon blue asterisk"> </i>
-        <a href="/cursos/rubrica_g/" target="_blank">Paciente</a>
-      </div>
-    </div>
-  </div>
-  </div>
-  </div>
-
-
-
-  <div class="ui bottom attached tab segment" data-tab="calificadas">
-      <div class="ui grid">
-
-        <div class="eight wide column">
-          <div class="ui grid">
-            <div class="ui row top attached ">
-
-                <span data-tooltip="Rúbrica calificada">
-                    <i class="icon  green check circle"> </i>
-                </span>
-
-              <a href="/cursos/rubrica_c/" target="_blank">Enfermería Piso</a>
-
-                  <div class="ui item">
-                      <div class="meta">&nbsp;Semana 1</div>
-                  </div>
-
-            </div>
-            <div class="ui bottom attached ">
-
-              <div class="ui label">
-                <i class="calendar icon"></i> 01/02/2021
-              </div>
-
-              <div class="ui label">
-                <i class="calculator icon"></i> 4.5
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <div class="eight wide column">
-          <div class="ui grid">
-            <div class="ui row top attached ">
-
-                <span data-tooltip="Rúbrica calificada">
-                    <i class="icon  green check circle"> </i>
-                </span>
-
-              <a href="/cursos/rubrica_c/" target="_blank">Enfermería Piso</a>
-
-                  <div class="ui item">
-                      <div class="meta">&nbsp;Semana 2</div>
-                  </div>
-
-            </div>
-            <div class="ui bottom attached ">
-
-              <div class="ui label">
-                <i class="calendar icon"></i> 07/02/2021
-              </div>
-
-              <div class="ui label">
-                <i class="calculator icon"></i> 4.1
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <div class="eight wide column">
-          <div class="ui grid">
-            <div class="ui row top attached ">
-
-                <span data-tooltip="Rúbrica calificada">
-                    <i class="icon  green check circle"> </i>
-                </span>
-
-              <a href="/cursos/rubrica_c/" target="_blank">Enfermería Piso</a>
-
-                  <div class="ui item">
-                      <div class="meta">&nbsp;Semana 3</div>
-                  </div>
-
-            </div>
-            <div class="ui bottom attached ">
-
-              <div class="ui label">
-                <i class="calendar icon"></i> 14/02/2021
-              </div>
-
-              <div class="ui label">
-                <i class="calculator icon"></i> 4.7
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <div class="eight wide column">
-          <div class="ui grid">
-            <div class="ui row top attached ">
-
-                <span data-tooltip="Rúbrica calificada">
-                    <i class="icon  green check circle"> </i>
-                </span>
-
-              <a href="/cursos/rubrica_c/" target="_blank">Desempeño Piso</a>
-
-                  <div class="ui item">
-                      <div class="meta">&nbsp;Ciclo 1</div>
-                  </div>
-
-            </div>
-            <div class="ui bottom attached ">
-
-              <div class="ui label">
-                <i class="calendar icon"></i> 03/04/2021
-              </div>
-
-              <div class="ui label">
-                <i class="calculator icon"></i> 3.3
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <div class="eight wide column">
-          <div class="ui grid">
-            <div class="ui row top attached ">
-
-                <span data-tooltip="Rúbrica calificada">
-                    <i class="icon  green check circle"> </i>
-                </span>
-
-              <a href="/cursos/rubrica_c/" target="_blank">Revista Observada</a>
-
-                  <div class="ui item">
-                      <div class="meta">&nbsp;Mitad 1</div>
-                  </div>
-
-            </div>
-            <div class="ui bottom attached ">
-
-              <div class="ui label">
-                <i class="calendar icon"></i> 23/01/2021
-              </div>
-
-              <div class="ui label">
-                <i class="calculator icon"></i> 4.4
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <div class="eight wide column">
-          <div class="ui grid">
-            <div class="ui row top attached ">
-
-                <span data-tooltip="Rúbrica calificada">
-                    <i class="icon  green check circle"> </i>
-                </span>
-
-              <a href="/cursos/rubrica_c/" target="_blank">Revista Observada</a>
-
-                  <div class="ui item">
-                      <div class="meta">&nbsp;Mitad 2</div>
-                  </div>
-
-            </div>
-            <div class="ui bottom attached">
-
-              <div class="ui label">
-                <i class="calendar icon"></i> 23/02/2021
-              </div>
-
-              <div class="ui label">
-                <i class="calculator icon"></i> 4.2
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <div class="eight wide column">
-          <div class="ui grid">
-            <div class="ui row top attached ">
-
-                <span data-tooltip="Rúbrica calificada">
-                    <i class="icon  green check circle"> </i>
-                </span>
-
-              <a href="/cursos/rubrica_c/" target="_blank">Revista Piso</a>
-
-                  <div class="ui item">
-                      <div class="meta">&nbsp;Final</div>
-                  </div>
-
-            </div>
-            <div class="ui bottom attached ">
-
-              <div class="ui label">
-                <i class="calendar icon"></i> 23/04/2021
-              </div>
-
-              <div class="ui label">
-                <i class="calculator icon"></i> 3.7
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <div class="eight wide column">
-          <div class="ui grid">
-            <div class="ui row top attached ">
-
-                <span data-tooltip="Rúbrica calificada">
-                    <i class="icon  green check circle"> </i>
-                </span>
-
-              <a href="/cursos/rubrica_c/" target="_blank">Paciente</a>
-
-                  <div class="ui item">
-                      <div class="meta">&nbsp;Paciente 1</div>
-                  </div>
-
-            </div>
-            <div class="ui bottom attached ">
-
-              <div class="ui label">
-                <i class="calendar icon"></i> 20/02/2021
-              </div>
-
-              <div class="ui label">
-                <i class="calculator icon"></i> 4.1
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <div class="eight wide column">
-          <div class="ui grid">
-            <div class="ui row top attached ">
-
-                <span data-tooltip="Rúbrica calificada">
-                    <i class="icon  green check circle"> </i>
-                </span>
-
-              <a href="/cursos/rubrica_c/" target="_blank">Paciente</a>
-
-                  <div class="ui item">
-                      <div class="meta">&nbsp;Paciente 1</div>
-                  </div>
-
-            </div>
-            <div class="ui bottom attached ">
-
-              <div class="ui label">
-                <i class="calendar icon"></i> 22/02/2021
-              </div>
-
-              <div class="ui label">
-                <i class="calculator icon"></i> 4.2
-              </div>
-
-            </div>
-          </div>
-        </div>
+  <h2 class="ui header">Rúbricas</h2>
+
+  <div class="ui fluid card">
+
+  <div class="ui divided list">
+
+    <div class="item">
+      <i class="icon blue asterisk"></i>
+      <div class="content">
+        <a href="/cursos/rubrica_g/"><h3>Enfermería Piso</h3></a>
+        <table class="ui very basic collapsing celled table">
+          <tbody>
+            <tr>
+              <td><i class="icon green check"></i></td>
+              <td><a href="/cursos/rubrica_c/">Semana 1</a></td>
+              <td>  <div class="ui label"> <i class="calendar icon"></i> 01/02/2021 </div> </td>
+              <td> <div class="ui label"> <i class="calculator icon"></i> 4.5 </div> </td>
+            </tr>
+            <tr>
+              <td><i class="icon green check"></i></td>
+              <td><a href="/cursos/rubrica_c/">Semana 2</a></td>
+              <td>  <div class="ui label"> <i class="calendar icon"></i> 07/02/2021 </div> </td>
+              <td> <div class="ui label"> <i class="calculator icon"></i> 4.1 </div> </td>
+            </tr>
+            <tr>
+              <td><i class="icon ellipsis horizontal"></i></td>
+              <td>Semana 3</td>
+              <td>  <div class="ui label"> <i class="tasks icon"></i> Pendiente </div> </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
 
-  <script language='javascript'>
-  $('.menu .item')
-    .tab()
-  ;
+    <div class="item">
+      <i class="icon blue asterisk"></i>
+      <div class="content">
+        <a href="/cursos/rubrica_g/"><h3>Consulta Observada</h3></a>
+        <table class="ui very basic collapsing celled table">
+          <tbody>
+            <tr>
+              <td><i class="icon ellipsis horizontal"></i></td>
+              <td>Nota final</td>
+              <td>  <div class="ui label"> <i class="tasks icon"></i> Pendiente </div> </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
-  $('.ui.normal.dropdown')
-    .dropdown({
-      maxSelections: 5
-    })
-  ;
-  $('.ui.special.dropdown')
-    .dropdown({
-      useLabels: false,
-      maxSelections: 3
-    })
-  ;
+    <div class="item">
+      <i class="icon blue asterisk"></i>
+      <div class="content">
+        <a href="/cursos/rubrica_g/"><h3>Desempeño Piso</h3></a>
+        <table class="ui very basic collapsing celled table">
+          <tbody>
+            <tr>
+              <td><i class="icon green check"></i></td>
+              <td><a href="/cursos/rubrica_c/">Ciclo 1</a></td>
+              <td>  <div class="ui label"> <i class="calendar icon"></i> 03/01/2021 </div> </td>
+              <td> <div class="ui label"> <i class="calculator icon"></i> 3.9 </div> </td>
+            </tr>
+            <tr>
+              <td><i class="icon ellipsis horizontal"></i></td>
+              <td>Ciclo 2</td>
+              <td>  <div class="ui label"> <i class="tasks icon"></i> Pendiente </div> </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
-  </script>
+    <div class="item">
+      <i class="icon blue asterisk"></i>
+      <div class="content">
+        <a href="/cursos/rubrica_g/"><h3>Revista Observada</h3></a>
+          <table class="ui very basic collapsing celled table">
+            <tbody>
+              <tr>
+                <td><i class="icon green check"></i></td>
+                <td><a href="/cursos/rubrica_c/">Mitad 1</a></td>
+                <td>  <div class="ui label"> <i class="calendar icon"></i> 17/01/2021 </div> </td>
+                <td> <div class="ui label"> <i class="calculator icon"></i> 4.5 </div> </td>
+              </tr>
+              <tr>
+                <td><i class="icon green check"></i></td>
+                <td><a href="/cursos/rubrica_c/">Mitad 2</a></td>
+                <td>  <div class="ui label"> <i class="calendar icon"></i> 05/05/2021 </div> </td>
+                <td> <div class="ui label"> <i class="calculator icon"></i> 5 </div> </td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
 
+    <div class="item">
+      <i class="icon blue asterisk"></i>
+      <div class="content">
+        <a href="/cursos/rubrica_g/"><h3>Revista Piso</h3></a>
+        <table class="ui very basic collapsing celled table">
+          <tbody>
+            <tr>
+              <td><i class="icon green check"></i></td>
+              <td><a href="/cursos/rubrica_c/">Final</a></td>
+              <td>  <div class="ui label"> <i class="calendar icon"></i> 27/03/2021 </div> </td>
+              <td> <div class="ui label"> <i class="calculator icon"></i> 4.3 </div> </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="item">
+      <i class="icon blue asterisk"></i>
+      <div class="content">
+        <a href="/cursos/rubrica_g/"><h3>Rotación Consulta</h3></a>
+        <table class="ui very basic collapsing celled table">
+          <tbody>
+            <tr>
+              <td><i class="icon ellipsis horizontal"></i></td>
+              <td>Nota final</td>
+              <td>  <div class="ui label"> <i class="tasks icon"></i> Pendiente </div> </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="item">
+      <i class="icon blue asterisk"></i>
+      <div class="content">
+        <a href="/cursos/rubrica_g/"><h3>Paciente</h3></a>
+        <table class="ui very basic collapsing celled table">
+          <tbody>
+            <tr>
+              <td><i class="icon green check"></i></td>
+              <td><a href="/cursos/rubrica_c/">Paciente 1</a></td>
+              <td>  <div class="ui label"> <i class="calendar icon"></i> 20/02/2021 </div> </td>
+              <td> <div class="ui label"> <i class="calculator icon"></i> 3.7 </div> </td>
+            </tr>
+            <tr>
+              <td><i class="icon green check"></i></td>
+              <td><a href="/cursos/rubrica_c/">Paciente 2</a></td>
+              <td>  <div class="ui label"> <i class="calendar icon"></i> 22/02/2021 </div> </td>
+              <td> <div class="ui label"> <i class="calculator icon"></i> 4.6 </div> </td>
+            </tr>
+            <tr>
+              <td><i class="icon green check"></i></td>
+              <td><a href="/cursos/rubrica_c/">Paciente 3</a></td>
+              <td>  <div class="ui label"> <i class="calendar icon"></i> 25/02/2021 </div> </td>
+              <td> <div class="ui label"> <i class="calculator icon"></i> 3.8 </div> </td>
+            </tr>
+            <tr>
+              <td><i class="icon ellipsis horizontal"></i></td>
+              <td>Paciente 4</td>
+              <td>  <div class="ui label"> <i class="tasks icon"></i> Pendiente </div> </td>
+            </tr>
+            <tr>
+              <td><i class="icon ellipsis horizontal"></i></td>
+              <td>Paciente 5</td>
+              <td>  <div class="ui label"> <i class="tasks icon"></i> Pendiente </div> </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="Site-footer ui inverted footer black segment">
@@ -425,7 +360,6 @@ body {
         });
       });
   </script>
-
 
   </body>
 </html>
