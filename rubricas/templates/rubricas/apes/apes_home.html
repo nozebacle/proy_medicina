@@ -1,0 +1,195 @@
+{% extends "rubricas/base.html" %}
+<!-- Implementación visualizaciones -->
+<!-- Fin Implementación visualizaciones -->
+
+{% block head_title %}
+Proy_medicina - APEs
+{% endblock %}
+
+{% block content %}
+
+{% load humanize %}
+<head>
+  <style type="text/css">
+    body {
+      background-color: #FFFFFF;
+    }
+    .ui.menu .item img.logo {
+      margin-right: 1.5em;
+    }
+    .main.container {
+      margin-top: 7em;
+    }
+    .wireframe {
+      margin-top: 2em;
+    }
+    .ui.footer.segment {
+      margin: 5em 0em 0em;
+      padding: 5em 0em;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 class="ui header">APEs</h1>
+  <br>
+
+  <div class="ui fluid card">
+    <div class="content">
+      <div class="header">¿Qué son las APEs?</div>
+      <div class="description">
+      <p>Las APEs son los Actividades Profesionales Esenciales que todos los residentes de la Facultad de Medicina de la Universidad de los Andes deben obtener para desempeñarse como médicos.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui fluid card">
+    <div class="content">
+      <div class="header">¿Qué APEs existen?</div>
+      <table class="ui very basic collapsing celled table">
+
+        <tbody>
+          <tr>
+            <td>
+              APE 1
+            </td>
+            <td>
+              Hace una historia clínica completa y detallada del paciente pediátrico, tiene en cuenta el crecimiento, desarrollo y comportamiento del paciente de acuerdo con los grupos de edad.
+            </td>
+          </tr>
+          <tr>
+            <td>
+              APE 2
+            </td>
+            <td>
+              Valora adecuadamente el crecimiento y desarrollo (físico, motriz, cognitivo, nutricional y socioemocional), la salud oral, visual, mental, sexual y reproductiva), la dinámica familiar, el contexto social y las redes de apoyo.
+            </td>
+          </tr>
+          <tr>
+            <td>
+              APE 3
+            </td>
+            <td>
+              Identifica y prioriza los diagnósticos diferenciales, conoce y usa adecuadamente las pruebas diagnosticas indicadas.
+            </td>
+          </tr>
+          <tr>
+            <td>
+              APE 4
+            </td>
+            <td>
+              Establece un Plan de manejo integral y seguimiento, tabaja en equipo,  hace el tratamiento de las enfermedades y problemas clínicos frecuentes en ámbito ambulatorio, urgencias, hospitalización.
+            </td>
+          </tr>
+          <tr>
+            <td>
+              APE 5
+            </td>
+            <td>
+              Identifica y trabaja para mejorar factores de riesgo o alteraciones de la dinámica y estructura familiar o social, que repercutan en el estado de salud.
+            </td>
+          </tr>
+          <tr>
+            <td>
+              APE 6
+            </td>
+            <td>
+              Se comunica adecuadamente y educa sobre las recomendaciones para la promoción y mantenimiento de la salud del paciente, familia y comunidad.
+            </td>
+          </tr>
+          <tr>
+            <td>
+              APE 7
+            </td>
+            <td>
+              Puede hacer los procedimientos básicos de un pediatra general.
+            </td>
+          </tr>
+          <tr>
+            <td>
+              APE 8
+            </td>
+            <td>
+              Documenta de manera adecuada, eficiente y razonada la atención del paciente en la historia clínica. Demuestra capacidad de síntesis y razonamiento clínico, se comunica y elabora informes para garantizar la calidad, seguridad, continuidad de la atención.
+            </td>
+          </tr>
+          <tr>
+            <td>
+              APE 9
+            </td>
+            <td>
+              Realiza una práctica clínica crítica y reflexiva, identificando problemas o inconsistencias que soluciona con base en la evidencia científica.
+            </td>
+          </tr>
+          <tr>
+            <td>
+              APE 10
+            </td>
+            <td>
+              Trabaja en equipo y realiza una práctica interdisciplinaria, coordina con los involucrados para garantizar la calidad, seguridad, continuidad en la atención en la institución y en el sistema de salud. Realiza interconsultas, referencia y contrareferencia.
+            </td>
+          </tr>
+          <tr>
+            <td>
+              APE 11
+            </td>
+            <td>
+              Identifica, puede Iniciar el estudio y tratamiento de las enfermedades y problemas clínicos complejos frecuentes, conoce sus limitaciones, sabe remitirlos
+            </td>
+          </tr>
+          <tr>
+            <td>
+              APE 12
+            </td>
+            <td>
+              Identifica los pacientes que requieren atención de urgencia y hace el manejo adecuado
+            </td>
+          </tr>
+          <tr>
+            <td>
+              APE 13
+            </td>
+            <td>
+              Puede recibir, evaluar, estabilizar y dar los cuidados iniciales a un recién nacido, incluida la educación a la madre.
+            </td>
+          </tr>
+          <tr>
+            <td>
+              APE 14
+            </td>
+            <td>
+              Puede dar soporte vital avanzado y realizar reanimación de pacientes pediátricos.
+            </td>
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+  </div>
+  <div class="Site-footer ui inverted footer black segment">
+    <div class="ui container">
+      <i class="large python mark icon"></i>
+      <div class="ui small horizontal list">
+        <a class="item" style="color: white;" href="/contactenos/">Cont&aacute;ctenos (1.0.1/29ba1bf)</a>
+      </div>
+      <div class="ui small  right floated horizontal list">
+        <i class="item">Universidad de los Andes | Facultad de Medicina</i>
+      </div>
+    </div>
+  </div>
+
+  <script language='javascript'>
+      $(document).ready(function() {
+        $('.ui.accordion').accordion()
+
+        $('.toggle').click(function() {
+          $('.ui.accordion').accordion('toggle', 1);
+        });
+      });
+  </script>
+
+  </body>
+</html>
+
+{% endblock %}

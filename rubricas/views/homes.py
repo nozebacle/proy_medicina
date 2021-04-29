@@ -8,7 +8,6 @@ import rubricas.utils as utils
 #from rubricas.constantes import PROFESOR, ESTUDIANTE, ADMINISTRADOR, MONITOR, COORDINADOR, SEMESTRE_ACTUAL
 
 
-#def home(request):
 def home(request):
     return home_estudiante(request)
 

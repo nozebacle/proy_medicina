@@ -1,0 +1,180 @@
+{% extends "rubricas/base.html" %}
+<!-- Implementación visualizaciones -->
+<!-- Fin Implementación visualizaciones -->
+
+{% block head_title %}
+Proy_medicina - Competencias
+{% endblock %}
+
+{% block content %}
+
+{% load humanize %}
+<head>
+  <style type="text/css">
+    body {
+      background-color: #FFFFFF;
+    }
+    .ui.menu .item img.logo {
+      margin-right: 1.5em;
+    }
+    .main.container {
+      margin-top: 7em;
+    }
+    .wireframe {
+      margin-top: 2em;
+    }
+    .ui.footer.segment {
+      margin: 5em 0em 0em;
+      padding: 5em 0em;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 class="ui header">Competencias</h1>
+  <br>
+
+  <div class="ui fluid card">
+    <div class="content">
+      <div class="header">¿Qué son las competencias?</div>
+      <br>
+      <div class="description">
+      <p>Las competencias son los objetivos prácticos de aprendizaje que se le evalúan a todos los residentes de la Facultad de Medicina de la Universidad de los Andes.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui fluid card">
+    <div class="content">
+      <div class="header">¿Qué competencias existen?</div>
+        <br>
+        <div class="ui styled fluid accordion">
+          <div class="title">
+            <i class="dropdown icon"></i>
+              Conocimientos para la Práctica
+          </div>
+
+          <div class="content">
+            <table class="ui very basic collapsing celled table">
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="content">CPP1</div>
+                  </td>
+                  <td>
+                    Conoce las ciencias  básicas y clínicas necesarias para la especialidad.
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="content">CPP2</div>
+                  </td>
+                  <td>
+                    Conoce la fisiopatología de las enfermedades y situaciones médicas esenciales de la especialidad
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="content">CPP3</div>
+                  </td>
+                  <td>
+                    Demuestra conocimientos suficientes para diagnosticar y tratar las patologías y situaciones médicas frecuentes
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="title">
+            <i class="dropdown icon"></i>
+            Habilidades clínicas
+          </div>
+          <div class="content">
+            <table class="ui very basic collapsing celled table">
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="content">HC1</div>
+                  </td>
+                  <td>
+                    Reúne  la información necesaria de manera organizada, identificando y profundizando en datos clínicos relevantes.  valora la salud, la dinámica familiar el contexto social.
+                  </td>
+                </tr><tr>
+                  <td>
+                    <div class="content">HC2</div>
+                  </td>
+                  <td>
+                    Sintetiza, analiza la información y establece diagnósticos diferenciales y planes de estudio y tratamiento apropiados.	E19
+                  </td>
+                </tr><tr>
+                  <td>
+                    <div class="content">HC3</div>
+                  </td>
+                  <td>
+                    Identifica, maneja, estabiliza pacientes con situaciones médicas de urgencia.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="title">
+            <i class="dropdown icon"></i>
+            Comunicación
+          </div>
+          <div class="content">
+            <table class="ui very basic collapsing celled table">
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="content">C1</div>
+                  </td>
+                  <td>
+                    Se comunica adecuada y oportunamente, con el paciente, la familia.
+                  </td>
+                </tr><tr>
+                  <td>
+                    <div class="content">C2</div>
+                  </td>
+                  <td>
+                    Atiende y cuida de todos los pacientes sin discriminación de ningún tipo.
+                  </td>
+                </tr><tr>
+                  <td>
+                    <div class="content">C3</div>
+                  </td>
+                  <td>
+                    La historia y los informes escritos son compole¡tos, fieles y adecuados.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="Site-footer ui inverted footer black segment">
+    <div class="ui container">
+      <i class="large python mark icon"></i>
+      <div class="ui small horizontal list">
+        <a class="item" style="color: white;" href="/contactenos/">Cont&aacute;ctenos (1.0.1/29ba1bf)</a>
+      </div>
+      <div class="ui small  right floated horizontal list">
+        <i class="item">Universidad de los Andes | Facultad de Medicina</i>
+      </div>
+    </div>
+  </div>
+
+  <script language='javascript'>
+      $(document).ready(function() {
+        $('.ui.accordion').accordion()
+
+        $('.toggle').click(function() {
+          $('.ui.accordion').accordion('toggle', 1);
+        });
+      });
+  </script>
+
+  </body>
+</html>
+
+{% endblock %}
