@@ -1,0 +1,46 @@
+# -*- coding: utf-8 -*-
+import os
+import random
+import sys
+
+from django.conf import settings
+from django.db import models
+from django.db.models import Count
+from django.contrib.auth.hashers import PBKDF2PasswordHasher
+
+
+ADMINISTRADOR = "AD"
+PROFESOR = "PR"
+ESTUDIANTE = "ES"
+ASISTENTE = "AS"
+
+
+TIPO_USUARIO = [
+    (ADMINISTRADOR, "Administrador"),
+    (PROFESOR, "Profesor"),
+    (ESTUDIANTE, "Estudiante"),
+    (ASISTENTE, "Asistente"),
+    (COORDINADOR, "Coordinador"),
+]
+
+
+class Usuario(models.Model):
+    login = models.CharField(max_length=50, unique=True)
+    password = models.CharField(max_length=200)
+    nombre = models.CharField(max_length=120)
+    alias = models.CharField(max_length=120, blank=True)
+    tipo = models.CharField(max_length=2, choices=TIPO_USUARIO, default=ESTUDIANTE)
+    ultimo_acceso = models.DateTimeField(auto_now_add=True)
+    puntos = models.IntegerField(default=0)
+    medallas = models.IntegerField(default=0)
+    usuario_local = models.BooleanField(default=False)
+    id_brightspace = models.IntegerField(default=0, blank=True, null=False)
+
+class Profesor(Usuario):
+    secciones = models.ManyToManyField("rubrica.Seccion", blank=True)
+
+class Asistente(Usuario):
+    secciones = models.ManyToManyField("rubrica.Seccion", blank=True)
+
+class Coordinador(Usuario):
+    secciones = models.ManyToManyField("rubrica.Seccion", blank=True)

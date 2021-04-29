@@ -1,0 +1,27 @@
+from django.shortcuts import get_object_or_404
+from django.http import Http404, HttpResponse
+
+import json
+import rubricas.utils as utils
+
+from rubricas.models.apes import APE
+from rubricas.models.temas import Patologia
+
+def apes(request):
+    APE.objects.all()
+    una = APE()
+
+    template_name = "rubricas/cursos/rubrica_g.html"
+    context = {
+    }
+    return utils.render_page(request, template_name, context)
+
+
+def patologias(request):
+    pats = Patologia.objects.all()
+    print(pats)
+
+    template_name = "rubricas/cursos/rubrica_g.html"
+    context = {
+    }
+    return utils.render_page(request, template_name, context)
