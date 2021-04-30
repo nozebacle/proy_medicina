@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'admin_menu',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -79,7 +80,7 @@ DB_PASSWORD = "medicina"  # os.environ['PWD_CALIFICADOR']
 DB_IP = "127.0.0.1"      # os.environ['DB_IP']
 
 ALTERNATIVES = {
-    'mysql': {
+    'mario': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'medicina',
         'USER': 'medicina',
@@ -90,6 +91,14 @@ ALTERNATIVES = {
             'charset': 'utf8mb4',
         }
     },
+    'pablo': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'djangodatabase',
+        'USER': 'palito',
+        'PASSWORD': 'Ppv8451002701!!',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    },
     'sqlite': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
@@ -97,14 +106,7 @@ ALTERNATIVES = {
 }
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'djangodatabase',
-        'USER': 'palito',
-        'PASSWORD': 'Ppv8451002701!!',
-        'HOST': 'localhost',
-        'PORT': '3306',
-    }
+    'default': ALTERNATIVES['mario']
 }
 
 # Password validation
