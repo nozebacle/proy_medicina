@@ -28,13 +28,20 @@ class Rubrica(models.Model):
     apes = models.ManyToManyField("rubricas.APE", null=True)
     competencias = models.ManyToManyField("rubricas.Competencia", null=True)
 
-    programa = models.ForeignKey("rubricas.Programa", null=True, on_delete=models.SET_NULL)
-    cursos = models.ManyToManyField("rubricas.Curso", related_name='+', blank=True)
-    secciones = models.ManyToManyField("rubricas.Seccion", related_name='+', blank=True)
 
 
     def __str__(self):
         return self.nombre
+
+
+class RubricaPrograma(Rubrica):
+    programa = models.ForeignKey("rubricas.Programa", null=True, on_delete=models.SET_NULL)
+
+class RubricaCurso(Rubrica):
+    cursos = models.ManyToManyField("rubricas.Curso", blank=True)
+
+class RubricaSeccion(Rubrica):
+    secciones = models.ManyToManyField("rubricas.Seccion", blank=True)
 
 
 

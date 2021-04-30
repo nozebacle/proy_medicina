@@ -15,8 +15,8 @@ class Programa(models.Model):
     """
     nombre = models.CharField(max_length=120, unique=True)
     codigo = models.CharField(max_length=10, unique=True)
-    apes = models.ManyToManyField("rubricas.APE", related_name='+')
-    competencias = models.ManyToManyField("rubricas.Competencia", related_name='+')
+    apes = models.ManyToManyField("rubricas.APE")
+    competencias = models.ManyToManyField("rubricas.Competencia")
 
     def __str__(self):
         return self.nombre
@@ -41,10 +41,10 @@ class Curso(models.Model):
     codigo = models.CharField(max_length=20, unique=False, default="DEPT-1234")
     semestre = models.CharField(max_length=20, unique=False)
     descripcion = models.TextField(default="")
-    apes = models.ManyToManyField("rubricas.APE", related_name='+')
-    competencias = models.ManyToManyField("rubricas.Competencia", related_name='+')
-    patologias = models.ManyToManyField("rubricas.Patologia", related_name='+')
-    procedimientos = models.ManyToManyField("rubricas.Procedimiento", related_name='+')
+    apes = models.ManyToManyField("rubricas.APE")
+    competencias = models.ManyToManyField("rubricas.Competencia")
+    patologias = models.ManyToManyField("rubricas.Patologia")
+    procedimientos = models.ManyToManyField("rubricas.Procedimiento")
 
     def __str__(self):
         return self.nombre + "-" +  self.semestre

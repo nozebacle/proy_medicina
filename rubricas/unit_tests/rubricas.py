@@ -2,15 +2,15 @@
 
 from rubricas.models.temas import Patologia, Procedimiento
 from rubricas.models.secciones import Programa, Curso, Seccion
-from rubricas.models.rubricas import Rubrica, Criterio, NivelCriterio, ItemCalificacionCurso, ItemCalificacionSeccion
+from rubricas.models.rubricas import RubricaSeccion, Criterio, NivelCriterio, ItemCalificacionCurso, ItemCalificacionSeccion
 from rubricas.models.apes import APE
 from rubricas.models.competencias import Competencia
 
 def crear_rubricas():
     print("Creando rúbricas")
-    Rubrica.objects.all().delete()
+    RubricaSeccion.objects.all().delete()
 
-    r = Rubrica()
+    r = RubricaSeccion()
     r.nombre = "Rúbrica de Enfermería Piso"
     r.nombre_interno = r.nombre
     r.descripcion = "Desempeño del residente en rotación según el/la jefe de enfermería del piso"

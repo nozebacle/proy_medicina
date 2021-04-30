@@ -73,6 +73,15 @@ def crear_apes():
     ape.descripcion = ape.nombre_largo
     ape.save()
 
+
+    ape = APE()
+    ape.sigla = "APE10"
+    ape.nombre_corto="Trabajo en equipo"
+    ape.nombre_largo = "Trabaja en equipo y realiza una práctica interdisciplinaria, coordina con los involucrados para garantizar la calidad, seguridad, continuidad en la atención en la institución y en el sistema de salud. Realiza interconsultas, referencia y contrareferencia. "
+    ape.descripcion = ape.nombre_largo
+    ape.save()
+
+
     ape = APE()
     ape.sigla = "APE11"
     ape.nombre_corto="Tratamiento enfermedades y problemas"
@@ -86,3 +95,22 @@ def crear_apes():
     ape.nombre_largo = "Identifica los pacientes que requieren atención de urgencia y hace el manejo adecuado."
     ape.descripcion = ape.nombre_largo
     ape.save()
+
+    ape = APE()
+    ape.sigla = "APE13"
+    ape.nombre_corto="Neonatos"
+    ape.nombre_largo = "Puede recibir, evaluar, estabilizar y dar los cuidados iniciales a un recién nacido, incluida la educación a la madre."
+    ape.descripcion = ape.nombre_largo
+    ape.save()
+
+    ape = APE()
+    ape.sigla = "APE14"
+    ape.nombre_corto="Reanimación"
+    ape.nombre_largo = "Puede dar soporte vital avanzado y realizar reanimación de pacientes pediátricos."
+    ape.descripcion = ape.nombre_largo
+    ape.save()
+
+
+
+
+

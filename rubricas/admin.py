@@ -81,13 +81,12 @@ admin.site.register(Seccion, SeccionAdmin)
 
 
 # Rubrica
-from rubricas.models.rubricas import Rubrica, Criterio, NivelCriterio, ItemCalificacionCurso, ItemCalificacionSeccion
+from rubricas.models.rubricas import RubricaPrograma, RubricaCurso, RubricaSeccion, Criterio, NivelCriterio, ItemCalificacionCurso, ItemCalificacionSeccion
 
-class RubricaAdmin(admin.ModelAdmin):
-    list_display = ("nombre","nombre_interno")
-    search_fields = ("nombre", "descripcion", "comentarios")
 
-admin.site.register(Rubrica, RubricaAdmin)
+admin.site.register(RubricaPrograma)
+admin.site.register(RubricaCurso)
+admin.site.register(RubricaSeccion)
 
 
 class CriterioAdmin(admin.ModelAdmin):

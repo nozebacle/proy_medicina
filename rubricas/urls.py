@@ -11,6 +11,6 @@ urlpatterns = [
     path("cursos/especifico/", cursos.curso_especifico, name="especifico"),
     path("cursos/rubrica_g/", cursos.rubrica_g, name="rubrica_g"),
     path("cursos/rubrica_c/", cursos.rubrica_c, name="rubrica_c"),
-    path("apes/", apes.apes, name="apes"),
+    path("apes/<str:cod_programa>/", apes.apes_home, name="apes"),
     path("competencias/", competencias.competencias, name="competencias"),
     ]

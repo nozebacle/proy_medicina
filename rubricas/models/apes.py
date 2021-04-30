@@ -5,7 +5,7 @@ En este módulo se definen clases que son administradas por django:
 """
 
 from django.db import models
-
+from rubricas.models.secciones import Programa
 
 class APE(models.Model):
     """
@@ -28,3 +28,7 @@ class APE(models.Model):
             return APE.objects.get(sigla=sigla)
         except:
             return None
+
+    def buscar_por_programa(programa: Programa):
+        apes = APE.objects.filter(programa=programa)
+        return apes

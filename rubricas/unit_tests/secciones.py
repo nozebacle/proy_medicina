@@ -26,6 +26,7 @@ def crear_programa():
     pr.apes.add(APE.buscar_por_sigla("APE10"))
     pr.apes.add(APE.buscar_por_sigla("APE11"))
     pr.apes.add(APE.buscar_por_sigla("APE12"))
+
     pr.save()
 
     # Poniéndole Competencias al programa
