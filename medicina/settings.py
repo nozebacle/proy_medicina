@@ -106,7 +106,7 @@ ALTERNATIVES = {
 }
 
 DATABASES = {
-    'default': ALTERNATIVES['mario']
+    'default': ALTERNATIVES['pablo']
 }
 
 # Password validation
