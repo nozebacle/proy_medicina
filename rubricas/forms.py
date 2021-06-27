@@ -1,7 +1,7 @@
-
 from django import forms
 from django.forms import ModelChoiceField
-#from martor.fields import MartorFormField
+
+# from martor.fields import MartorFormField
 
 
 class AuthForm(forms.Form):

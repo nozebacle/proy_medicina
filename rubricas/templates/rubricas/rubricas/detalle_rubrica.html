@@ -1,0 +1,150 @@
+{% extends "rubricas/base.html" %}
+<!-- Implementación visualizaciones -->
+<!-- Fin Implementación visualizaciones -->
+
+{% block head_title %}
+    {{ rubrica.nombre }}
+{% endblock %}
+
+{% block content %}
+
+{% load humanize %}
+
+<p>Detalles de la rúbrica</p>
+<div class="ui divider"></div>
+
+<h1 class="ui header">Rúbrica:  <i class="caret right icon"></i> {{ rubrica.nombre }}</h1>
+
+<table class="ui celled table">
+    <tbody>
+      <tr>
+        <th>Nombre</th>
+        <td>{{ rubrica.nombre }}</td>
+      </tr>
+      <tr>
+        <th>Descripción</th>
+        <td>{{ rubrica.descripcion }}</td>
+      </tr>
+      <tr>
+        <th>Comentarios</th>
+        <td>{{ rubrica.comentarios }}</td>
+      </tr>
+      <tr>
+        <td colspan="2">
+           <div class="ui styled fluid accordion">
+            <div class="title">
+              <i class="blue icon sitemap"> </i>
+              <i class="dropdown icon"></i>
+              APEs declaradas
+            </div>
+            <div class="ui content list collapsing">
+                  {% for ape in rubrica.apes.all %}
+                  <div class="item">
+                    <div class="header">
+                    <a href="{% url 'ape_curso' ape.id curso.id %}"> <i class="search icon blue"></i></a>
+                    {{ape.sigla}}
+                    </div>
+                    <div class="left aligned content">
+                      {{ape.nombre_largo}}
+                    </div>
+                  </div>
+                  {% endfor %}
+
+            </div>
+          </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+           <div class="ui styled fluid accordion">
+            <div class="title">
+              <i class="pink icon project diagram"> </i>
+              <i class="dropdown icon"></i>
+              Competencias declaradas
+            </div>
+            <div class="ui content list collapsing">
+                  {% regroup rubrica.competencias.all by grupo as competencias_rubricas %}
+                  {% for grupo in competencias_rubricas %}
+                   <div class="item">
+                      <div class="header">
+                      {{ grupo.grouper.sigla }} - {{ grupo.grouper.nombre_corto }}
+                      </div>
+                      {% for competencia in grupo.list %}
+                      <div class="left aligned content">
+                         <a href="{% url 'competencia_programa' competencia.id curso.id %}">
+                           <i class="search icon pink"></i>
+                         </a>
+                         {{competencia.sigla}} - {{competencia.nombre}}
+                      </div>
+                      {% endfor %}
+                  </div>
+                  {% endfor %}
+            </div>
+          </div>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+  <table class="ui striped celled table">
+    <thead>
+      <tr>
+        <th>Criterios</th>
+        {% for nivel in rubrica.consultar_niveles %}
+        <th>
+            <div class="ui center aligned">{{ nivel.numero }}</div>
+            <div class="ui center aligned">{{ nivel.nombre }}</div>
+        </th>
+        {% endfor %}
+        <th class="center aligned">Puntaje</th>
+      </tr>
+    </thead>
+  <tbody>
+    {% for criterio in rubrica.consultar_criterios %}
+    <tr>
+      <td>
+        <span data-tooltip="{{ criterio.consultar_nombres_apes }}"  data-position="right center"  data-variation="tiny">
+            <i class="blue icon sitemap"> </i>
+        </span>
+        <span data-tooltip="{{ criterio.consultar_nombres_competencias }}"  data-position="right center"  data-variation="tiny">
+            <i class="pink icon project diagram"> </i>
+        </span>
+        <br>
+        <strong>{{ criterio.descripcion }}</strong>
+      </td>
+      {% for nivel in criterio.consultar_niveles %}
+      <td class="top aligned">
+        <p style="color:grey">{{ nivel.puntos }} puntos</p>
+        <div>
+          {{ nivel.descripcion }}
+        </div>
+      </td>
+      {% endfor %}
+      <td class="center aligned">{{ criterio.consultar_total_puntos }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+  </table>
+
+
+  <div class="ui fluid card">
+    <table class="ui  basic table">
+      <tr>
+        <td class="right aligned"><strong>Puntaje total: {{ rubrica.consultar_total_puntos }}</strong></td>
+      </tr>
+    </table>
+  </div>
+
+  <script language='javascript'>
+      $(document).ready(function() {
+        $('.ui.accordion').accordion()
+
+        $('.toggle').click(function() {
+          $('.ui.accordion').accordion('toggle', 1);
+        });
+      });
+  </script>
+
+
+{% endblock %}

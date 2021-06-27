@@ -1,14 +1,18 @@
-from django.shortcuts import render, redirect, reverse, HttpResponse
+from django.shortcuts import render, redirect, reverse
 import datetime
-#import dashboard.utils as utils
-#from dashboard.models.usuarios import Usuario, Registro
+import sys
+
+import rubricas.utils as utils
+
+from rubricas.models.usuarios import Usuario, Registro
 from rubricas.forms import AuthForm
 
 
 def login(request, mensaje=None):
     forma = AuthForm(request.POST or None)
     if forma.is_valid():
-        # request.session.flush()
+        request.session.flush()
+
         usuario = forma.cleaned_data["usuario"]
         password_forma = forma.cleaned_data["password"]
 
@@ -34,11 +38,12 @@ def login(request, mensaje=None):
                 return redirect(reverse("home"))
             else:
                 mensaje = "Password incorrecto."
-        except Usuario.DoesNotExist:
-            print("No encontré el usuario")
-            mensaje = "Nombre de usuario incorrecto."
+        except:  # Usuario.DoesNotExist:
+            print("No encontré el usuario:" + usuario + " " + str(resultado))
+            print("Unexpected error:", sys.exc_info()[0])
+            mensaje = "Nombre de usuario incorrecto"
 
-    template_name = "dashboard/login.html"
+    template_name = "rubricas/login.html"
     context = {"mensaje": mensaje}
     return render(request, template_name, context)
 

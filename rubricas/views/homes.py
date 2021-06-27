@@ -4,17 +4,19 @@ from django.http import Http404, HttpResponse
 import json
 
 import rubricas.utils as utils
-#from rubricas.models.usuarios import Usuario
-#from rubricas.constantes import PROFESOR, ESTUDIANTE, ADMINISTRADOR, MONITOR, COORDINADOR, SEMESTRE_ACTUAL
+import rubricas.views.secciones as secciones
 
 
 def home(request):
-    return home_estudiante(request)
+    return home_profesor(request)
 
 
 def home_estudiante(request):
     template_name = "rubricas/homes/home_estudiante.html"
-    context = {
-    }
+    context = {}
 
     return utils.render_page(request, template_name, context)
+
+
+def home_profesor(request):
+    return secciones.listar_secciones(request)

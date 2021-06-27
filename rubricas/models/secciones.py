@@ -7,16 +7,19 @@ En este módulo se definen clases que son administradas por django:
 """
 
 from django.db import models
+from rubricas.models.competencias import GrupoCompetencia
+from rubricas.models.rubricas import RubricaCurso, RubricaSeccion, ItemCalificacionCurso
 
 
 class Programa(models.Model):
     """
     Esta clase sirve para representar un programa que agrupa Cursos
     """
+
     nombre = models.CharField(max_length=120, unique=True)
     codigo = models.CharField(max_length=10, unique=True)
-    apes = models.ManyToManyField("rubricas.APE")
-    competencias = models.ManyToManyField("rubricas.Competencia")
+    apes = models.ManyToManyField("rubricas.APE", blank=True)
+    competencias = models.ManyToManyField("rubricas.Competencia", blank=True)
 
     def __str__(self):
         return self.nombre
@@ -31,6 +34,66 @@ class Programa(models.Model):
         except:
             return None
 
+    def buscar_por_id(id_programa: int):
+        """
+        Busca el Programa con el id dado y lo retorna
+        Si no encuentra uno, retorna None
+        """
+        try:
+            return Programa.objects.get(id=id_programa)
+        except:
+            return None
+
+    def buscar_por_profesor(id_profesor: int):
+        """
+        Busca todos los programas en los cuales partipa el profesor
+        con el id dado. Si el id no corresponde a un profesor, o el
+        profesor no hace parte de ningún curso o sección, retorna una
+        lista vacía.
+        """
+        try:
+            return Programa.objects.all()
+        except:
+            return None
+
+    def agregar_ape(self, APE) -> None:
+        """
+        Agrega una nueva APE al programa.
+        Parámetros:
+          APE: el APE que se debe agregar
+        """
+        self.apes.add(APE)
+
+    def agregar_competencia(self, competencia) -> None:
+        """
+        Agrega una nueva competencia al programa.
+        Parámetros:
+          competencia: la competencia que se debe agregar
+        """
+        self.competencias.add(competencia)
+
+    def consultar_grupos_competencias_programa(self):
+        """
+        Consulta los grupos de competencia a los que pertenecen las
+        competencias asociadas al programa
+        """
+        return GrupoCompetencia.buscar_por_programa(self)
+
+    def consultar_cursos_programa(self):
+        """
+        Retorna los cursos que hacen parte del programa
+        """
+        return self.curso_set.all()
+
+    def consultar_apes(self):
+        """Retorna los APEs asociadas al programa"""
+        return self.apes.all()
+
+    def consultar_competencias(self):
+        """Retorna las competencias asociadas al programa"""
+        return self.competencias.all()
+
+
 class Curso(models.Model):
     """
     Esta clase sirve para representar un curso dentro de un programa
@@ -40,14 +103,15 @@ class Curso(models.Model):
     nombre_interno = models.CharField(max_length=150, unique=False)
     codigo = models.CharField(max_length=20, unique=False, default="DEPT-1234")
     semestre = models.CharField(max_length=20, unique=False)
+    activo = models.BooleanField(default=True)
     descripcion = models.TextField(default="")
-    apes = models.ManyToManyField("rubricas.APE")
-    competencias = models.ManyToManyField("rubricas.Competencia")
-    patologias = models.ManyToManyField("rubricas.Patologia")
-    procedimientos = models.ManyToManyField("rubricas.Procedimiento")
+    apes = models.ManyToManyField("rubricas.APE", blank=True)
+    competencias = models.ManyToManyField("rubricas.Competencia", blank=True)
+    patologias = models.ManyToManyField("rubricas.Patologia", blank=True)
+    procedimientos = models.ManyToManyField("rubricas.Procedimiento", blank=True)
 
     def __str__(self):
-        return self.nombre + "-" +  self.semestre
+        return self.nombre + "-" + self.semestre
 
     def buscar_por_codigo_semestre(codigo: str, semestre: str):
         """
@@ -59,17 +123,100 @@ class Curso(models.Model):
         except:
             return None
 
+    def buscar_por_id(id_curso: int):
+        """
+        Busca el Curso con el id dado y lo retorna
+        Si no encuentra uno, retorna None
+        """
+        try:
+            return Curso.objects.get(id=id_curso)
+        except:
+            return None
+
+    def agregar_ape(self, APE) -> None:
+        """
+        Agrega una nueva APE al curso.
+        Parámetros:
+          APE: el APE que se debe agregar
+        """
+        self.apes.add(APE)
+
+    def agregar_competencia(self, competencia) -> None:
+        """
+        Agrega una nueva competencia al curso.
+        Parámetros:
+          competencia: la competencia que se debe agregar
+        """
+        self.competencias.add(competencia)
+
+    def consultar_rubricas(self):
+        """Retorna las rúbricas asociadas al curso"""
+        return self.rubricacurso_set.all()
+
+    def consultar_items(self):
+        """Retorna los ítems de calificación del curso"""
+        return self.itemcalificacioncurso_set.all()
+
+    def consultar_apes(self):
+        """Retorna los APEs asociadas al curso"""
+        return self.apes.all()
+
+    def consultar_competencias(self):
+        """Retorna las competencias asociadas al curso"""
+        return self.competencias.all()
+
+    def derivar_seccion(self, numero: int, semestre: str):
+        """
+        Crea una nueva sección que es un reflejo del curso y está asociada a este curso.
+        La nueva sección tiene asciados elementos de tipo RubricaSeccion e ItemCalificacionSeccion
+        """
+        seccion = Seccion()
+        seccion.curso = self
+        seccion.numero = numero
+        seccion.semestre = semestre
+        seccion.save()
+
+        diccionario_clones = {}
+
+        rubricas = self.consultar_rubricas()
+        for rubrica in rubricas:
+            print("clonando", rubrica.nombre)
+            r_seccion = rubrica.clonar_a_rubrica_seccion()
+            r_seccion.seccion = seccion
+            r_seccion.save()
+            diccionario_clones[rubrica.id] = r_seccion.id
+
+        items = self.consultar_items()
+        for item in items:
+            print("clonando", item.nombre)
+            i_seccion = item.clonar_a_item_seccion()
+            i_seccion.seccion = seccion
+            id_rubrica_seccion = diccionario_clones[item.rubrica.id]
+            i_seccion.rubrica = RubricaSeccion.objects.get(id=id_rubrica_seccion)
+            i_seccion.save()
+
+        return seccion
 
 class Seccion(models.Model):
     """
     Esta clase sirve para representar secciones de un curso en un semestre particular.
     """
+
     curso = models.ForeignKey("rubricas.Curso", null=True, on_delete=models.SET_NULL)
     numero = models.IntegerField(default=1)
     identificador_bs = models.CharField(max_length=120, null=True, blank=True)
+    semestre = models.CharField(max_length=20, null=False, blank=False)
+
+    def consultar_rubricas(self):
+        """Retorna las rúbricas asociadas a la sección"""
+        return self.rubricaseccion_set.all()
+
+    def consultar_items(self):
+        """Retorna los ítems de calificación de la sección"""
+        return self.itemcalificacionseccion_set.all()
 
     def __str__(self):
-        return str(self.curso) + ", Secc. " + str(self.numero)
+        return self.semestre + ": " + str(self.curso.codigo) +  ", Secc. " + str(self.numero)
 
     def buscar_por_numero(curso: Curso, numero: int):
         """
@@ -80,6 +227,10 @@ class Seccion(models.Model):
             return Seccion.objects.get(curso=curso, numero=numero)
         except:
             return None
+
+    def consultar_estudiantes(self):
+        return self.estudiante_set.all()
+
 
 #     def crear_seccion(numero_seccion: int, nombre_semestre: str, curso: Curso, identificador_bs = "0"):
 #         """

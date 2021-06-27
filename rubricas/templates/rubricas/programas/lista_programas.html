@@ -1,0 +1,106 @@
+{% extends "rubricas/base.html" %}
+<!-- Implementación visualizaciones -->
+<!-- Fin Implementación visualizaciones -->
+
+{% block head_title %}
+Programas
+{% endblock %}
+
+{% block content %}
+
+{% load humanize %}
+
+<p>Programas en los que participa</p>
+<div class="ui divider"></div>
+
+<h1 class="ui header">Programas académicos</h1>
+
+<table class="ui celled table">
+    <tbody>
+      {% for programa in programas %}
+      <tr>
+        <th>
+          {{ programa.codigo }} - {{ programa.nombre }}
+        </th>
+        <td>
+          {% for curso in programa.consultar_cursos_programa %}
+            <div class="ui basic label"  data-tooltip="{{ curso.nombre }}"  data-position="top center"  data-variation="tiny">
+              <a href="{% url 'curso' curso.id %}"> <i class="search icon green"></i></a> {{ curso.codigo }}
+            </div>
+          {% endfor %}
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="2">
+           <div class="ui styled fluid accordion">
+            <div class="title">
+              <i class="blue icon sitemap"> </i>
+              <i class="dropdown icon"></i>
+              APEs declaradas
+            </div>
+            <div class="ui content list collapsing">
+                  {% for ape in programa.apes.all %}
+                  <div class="item">
+                    <div class="header">
+                    <a href="{% url 'ape_programa' ape.id programa.id %}"> <i class="search icon blue"></i></a>
+                    {{ape.sigla}}
+                    </div>
+                    <div class="left aligned content">
+                      {{ape.nombre_largo}}
+                    </div>
+                  </div>
+                  {% endfor %}
+
+            </div>
+          </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+           <div class="ui styled fluid accordion">
+            <div class="title">
+              <i class="pink icon project diagram"> </i>
+              <i class="dropdown icon"></i>
+              Competencias declaradas
+            </div>
+            <div class="ui content list collapsing">
+                  {% for gc in programa.consultar_grupos_competencias_programa %}
+                  <div class="item">
+                    <div class="header">
+                     {{gc.sigla}} - {{gc.nombre_corto}}
+                    </div>
+
+                    {% for competencia in gc.competencia_set.all %}
+                    <div class="left aligned content">
+                       <a href="{% url 'competencia_programa' competencia.id programa.id %}">
+                         <i class="search icon pink"></i>
+                       </a> {{competencia.sigla}} - {{competencia.nombre}}
+                    </div>
+                    {% endfor %}
+
+                  </div>
+                  {% endfor %}
+
+            </div>
+          </div>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+
+  <script language='javascript'>
+      $(document).ready(function() {
+        $('.ui.accordion').accordion()
+
+        $('.toggle').click(function() {
+          $('.ui.accordion').accordion('toggle', 1);
+        });
+      });
+  </script>
+
+
+
+{% endblock %}

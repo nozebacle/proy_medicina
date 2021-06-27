@@ -1,0 +1,44 @@
+<div class="ui left visible thin vertical inverted sidebar labeled icon menu">
+
+  <a class="item" href="{% url 'home' %}">
+    <i class="home icon"></i>
+    Home
+  </a>
+
+  <a class="item" href="{% url 'cursos' %}">
+    <i class="block layout icon"></i>
+    Cursos
+  </a>
+
+  <a class="item" href="{% url 'apes' 'PEDI' %}">
+    <i class="sitemap icon"></i>
+    APEs
+  </a>
+
+  <a class="item" href="{% url 'competencias' %}">
+    <i class="project diagram icon"></i>
+    Competencias
+  </a>
+
+  <a class="item">
+    <i class="cog icon"></i>
+    Configuraciones
+  </a>
+
+  <a class="item">
+    <i class="question circle outline icon"></i>
+    Ayuda
+  </a>
+
+   <a class="item">
+     <i class="user icon"></i>
+     Mi Perfil
+   </a>
+   
+   <a class="item" href="{% url 'logout' %}">
+    <i class="door closed icon"></i>
+    Salir
+   </a>
+     
+
+ </div>

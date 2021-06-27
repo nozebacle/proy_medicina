@@ -1,0 +1,188 @@
+{% extends "rubricas/base.html" %}
+
+{% block head_title %}
+{{ curso.codigo }}
+{% endblock %}
+
+{% block content %}
+
+{% load humanize %}
+
+<p>Detalles del curso</p>
+<div class="ui divider"></div>
+
+<h1 class="ui header">{{ curso.codigo }} <i class="caret right icon"></i>{{ curso.nombre }}</h1>
+
+<table class="ui celled table">
+    <tbody>
+      <tr>
+        <th>Nombre</th>
+        <td>{{ curso.nombre}}</td>
+      </tr>
+      <tr>
+        <th>Versión actual</th>
+        <td>{{ curso.nombre_interno }}</td>
+      </tr>
+      <tr>
+        <th>Descripción</th>
+        <td>{{ curso.descripcion }}</td>
+      </tr>
+
+      <tr>
+        <th>Ítems de calificación</th>
+        <td>
+            <table class="ui celled table">
+              <thead>
+                <tr>
+                    <th>Ítem</th>
+                    <th class="ui center aligned">Peso</th>
+                    <th>Rúbrica</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for item in items %}
+                    <tr>
+                        <td>
+                            {{ item.nombre }}
+                        </td>
+                        <td class="ui center aligned">
+                            {{ item.peso|floatformat }}%
+                        </td>
+                        <td>
+                            <a href="{% url 'rubrica_curso' item.rubrica.id curso.id %}"><i class="search icon blue"></i></a>{{ item.rubrica.nombre }}
+                        </td>
+                    </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Rúbricas del curso</th>
+        <td>
+            <div class="ui bulleted list">
+                {% for rubrica in rubricas %}
+                    <div class="item>">
+                        <a href="{% url 'rubrica_curso' rubrica.id curso.id %}"><i class="search icon blue"></i></a>
+                        {{ rubrica.nombre }}
+                    </div>
+                {% endfor %}
+            </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="2">
+           <div class="ui styled fluid accordion">
+            <div class="title">
+              <i class="blue icon sitemap"> </i>
+              <i class="dropdown icon"></i>
+              APEs declaradas
+            </div>
+            <div class="ui content list collapsing">
+                  {% for ape in curso.apes.all %}
+                  <div class="item">
+                    <div class="header">
+                    <a href="{% url 'ape_curso' ape.id curso.id %}"> <i class="search icon blue"></i></a>
+                    {{ape.sigla}}
+                    </div>
+                    <div class="left aligned content">
+                      {{ape.nombre_largo}}
+                    </div>
+                  </div>
+                  {% endfor %}
+
+            </div>
+          </div>
+        </tr>
+        <tr>
+        <td colspan="2">
+           <div class="ui styled fluid accordion">
+            <div class="title">
+              <i class="pink icon project diagram"> </i>
+              <i class="dropdown icon"></i>
+              Competencias declaradas
+            </div>
+            <div class="ui content list collapsing">
+                  {% regroup curso.competencias.all by grupo as competencias_rubricas %}
+                  {% for grupo in competencias_rubricas %}
+                   <div class="item">
+                      <div class="header">
+                      {{ grupo.grouper.sigla }} - {{ grupo.grouper.nombre_corto }}
+                      </div>
+                      {% for competencia in grupo.list %}
+                      <div class="left aligned content">
+                         <a href="{% url 'competencia_programa' competencia.id curso.id %}">
+                           <i class="search icon pink"></i>
+                         </a>
+                         {{competencia.sigla}} - {{competencia.nombre}}
+                      </div>
+                      {% endfor %}
+                  </div>
+                  {% endfor %}
+                  </div>
+            </div>
+          </div>
+        </tr>
+
+        <tr>
+        <td colspan="2">
+           <div class="ui styled fluid accordion">
+            <div class="title">
+              <i class="green icon virus"> </i>
+              <i class="dropdown icon"></i>
+              Patologías
+            </div>
+            <div class="ui content list collapsing">
+
+                    {% for pat in curso.patologias.all %}
+                  <div class="item left aligned content">
+
+                         <span><i class="search icon pink"></i></span>
+                       <strong>{{pat.codigo}} </strong>: <span>{{pat.nombre}}</span>
+                    </div>
+                    {% endfor %}
+
+                  </div>
+
+
+            </div>
+          </div>
+        </tr>
+
+       <tr>
+        <td colspan="2">
+           <div class="ui styled fluid accordion">
+            <div class="title">
+              <i class="black icon cut"> </i>
+              <i class="dropdown icon"></i>
+              Procedimientos
+            </div>
+            <div class="ui content list collapsing">
+
+                    {% for proc in curso.procedimientos.all %}
+                  <div class="item left aligned content">
+
+                       <span>  <i class="search icon pink"></i> </span>
+                       <strong>{{proc.codigo}} </strong>: <span>{{proc.nombre}}</span>
+                    </div>
+                    {% endfor %}
+                  </div>
+            </div>
+          </div>
+        </tr>
+    </tbody>
+  </table>
+
+  <script language='javascript'>
+      $(document).ready(function() {
+        $('.ui.accordion').accordion()
+
+        $('.toggle').click(function() {
+          $('.ui.accordion').accordion('toggle', 1);
+        });
+      });
+  </script>
+
+{% endblock %}

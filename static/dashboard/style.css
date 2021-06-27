@@ -13,14 +13,19 @@ body {
 .ui.menu .item img.logo {
     margin-right: 1.5em;
   }
+ 
+
   
 .main.container {
-    margin-top: 7em;
+    margin-top: 0.5em;
+    padding: 1em;
+    margin-right: 2em;
+    max-width: 85%;
   }
 
 .wireframe {
-    margin-top: 2em;
-  }
+      margin-top: 2em;
+    }
 
 .ui.footer.segment {
     margin: 5em 0em 0em;

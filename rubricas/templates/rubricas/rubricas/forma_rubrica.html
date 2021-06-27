@@ -1,0 +1,122 @@
+{% extends "rubricas/base.html" %}
+<!-- Implementación visualizaciones -->
+<!-- Fin Implementación visualizaciones -->
+
+{% block head_title %}
+    {{ rubrica.nombre }}
+{% endblock %}
+
+{% block content %}
+
+{% load humanize %}
+
+<p>Detalles de la rúbrica</p>
+<div class="ui divider"></div>
+
+<h1 class="ui header">Evaluación:  <i class="caret right icon"></i> {{ item.nombre }}</h1>
+
+<form class="ui form" action="{% url 'seccion' item.seccion.id %}">
+
+  <table class="ui celled padded table">
+    <tbody>
+      <tr>
+        <th>Estudiante</th>
+        <td>{{ estudiante.nombre }} ({{ estudiante.login }})</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <table class="ui striped celled table">
+    <thead>
+      <tr>
+        <th>Criterios</th>
+        {% for nivel in rubrica.consultar_niveles %}
+        <th>
+            <div class="ui center aligned">{{ nivel.numero }}</div>
+            <div class="ui center aligned">{{ nivel.nombre }}</div>
+        </th>
+        {% endfor %}
+        <th class="center aligned">N/A</th>
+      </tr>
+    </thead>
+  <tbody>
+    {% for criterio in rubrica.consultar_criterios %}
+    <tr>
+      <td rowspan="2" class="ui celled">
+        <strong>{{ criterio.descripcion }}</strong>
+      </td>
+      {% for nivel in criterio.consultar_niveles %}
+      <td class="top aligned">
+        <p style="color:grey">{{ nivel.puntos }} puntos</p>
+        <div>
+          {{ nivel.descripcion }}
+        </div>
+        <div class="center aligned">
+            <div class="ui radio checkbox">
+              <input type="radio" name="criterio_{{ criterio.id }}" checked="" tabindex="0" class="hidden">
+              <label>{{ nivel.nombre }}</label>
+            </div>
+        </div>
+      </td>
+      {% endfor %}
+
+      <td class="bottom aligned">
+          <div class="center aligned">
+            <div class="ui radio checkbox">
+              <input type="radio" name="criterio_{{ criterio.id }}" checked="checked" tabindex="0" class="hidden">
+              <label>N/A</label>
+            </div>
+           </div>
+       </td>
+    </tr>
+    <tr>
+      <td colspan="{{ rubrica.contar_niveles }}">
+        <div class="field">
+            <label>Comentarios específicos del criterio</label>
+            <textarea rows="2"></textarea>
+        </div>
+       </td><td></td>
+    </tr>
+
+    {% endfor %}
+  </tbody>
+  </table>
+
+  <!--
+  <div class="ui fluid card">
+    <table class="ui  basic table">
+      <tr>
+        <td class="right aligned"><strong>Puntaje total: <span id="total">5</span>  / {{ rubrica.consultar_total_puntos }}</strong></td>
+      </tr>
+    </table>
+  </div> -->
+
+  <div class="ui fluid padded card">
+    <div class="field">
+        <label class="large">Comentarios generales para el estudiante</label>
+        <textarea rows="4"></textarea>
+    </div>
+  </div>
+
+
+    <div class="center aligned">
+        <button class="ui violet button" type="submit">Guardar</button>
+        <button class="ui green button" type="submit">Publicar</button>
+    </div>
+</form>
+
+  <script language='javascript'>
+      $(document).ready(function() {
+        $('.ui.accordion').accordion()
+
+        $('.toggle').click(function() {
+          $('.ui.accordion').accordion('toggle', 1);
+        });
+
+        $('.ui.radio.checkbox').checkbox();
+      });
+  </script>
+
+
+{% endblock %}

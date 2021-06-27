@@ -1,0 +1,93 @@
+{% extends "rubricas/base.html" %}
+<!-- Implementación visualizaciones -->
+<!-- Fin Implementación visualizaciones -->
+
+{% block head_title %}
+    {{ rubrica.nombre }}
+{% endblock %}
+
+{% block content %}
+
+{% load humanize %}
+
+<p>Desempeño de un estudiante en un curso</p>
+<div class="ui divider"></div>
+
+<div class="ui horizontal fluid card">
+    <div class="content">
+      <div class="header">
+        {{ estudiante.nombre }}
+      </div>
+      <div class="meta">
+        {{ estudiante.login }}
+      </div>
+      <div class="meta">
+        {{ estudiante.codigo }}
+      </div>
+      <div class="description">
+        <div class="items">
+            <div class="item"><i class="blue icon sitemap"> </i>Desempeño APEs</div>
+            <div class="item"><i class="pink icon project diagram"> </i> Desempeño Competencias</div>
+        </div>
+      </div>
+    </div>
+    <div class="image">
+       <img class="right floated mini ui image" src="/image/avatar.jpg">
+     </div>
+</div>
+
+<table class="ui padded table">
+    <tbody>
+      <tr>
+        <th>Desempeño global en el curso</th>
+        <td>{{ estudiante.resumen.resultado }} ( {{ estudiante.resumen.resultado_porcentual }}% ) </td>
+    </tbody>
+  </table>
+
+
+  <table class="ui striped celled table">
+    <thead>
+      <tr>
+        <th class="center aligned" colspan="3">Evaluaciones del curso</th>
+      </tr>
+      <tr>
+        <th class="ui left aligned">Evaluación</th>
+        <th class="center aligned">Peso evaluación</th>
+        <th class="center aligned">Resultado</th>
+      </tr>
+    </thead>
+  <tbody>
+    {% for item, resultado in resultados %}
+    <tr>
+      <td>
+        <strong>{{ item.nombre }}</strong>
+      </td>
+      <td class="center aligned">
+        {{ item.peso }}%
+      </td>
+      <td class="center aligned">
+        {{ resultado.puntos }}/{{ resultado.item.peso }} ( {{ resultado.resultado }}% )
+            <i class="blue icon edit"> </i>
+            {% if resultado %}
+                <i class="blue icon search"> </i>
+            {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+  </table>
+
+
+
+  <script language='javascript'>
+      $(document).ready(function() {
+        $('.ui.accordion').accordion()
+
+        $('.toggle').click(function() {
+          $('.ui.accordion').accordion('toggle', 1);
+        });
+      });
+  </script>
+
+
+{% endblock %}

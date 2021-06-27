@@ -1,0 +1,67 @@
+{% extends "rubricas/base.html" %}
+
+{% block head_title %}
+{{ ape.sigla }}
+{% endblock %}
+
+{% block content %}
+
+{% load humanize %}
+
+<p>Detalles de una Competencia</p>
+<div class="ui divider"></div>
+
+<h1 class="ui header">{{ competencia.sigla }}</h1>
+
+<table class="ui celled table">
+    <tbody>
+      <tr>
+        <th>Nombre</th>
+        <td>{{ competencia.nombre}}</td>
+      </tr>
+      <tr>
+        <th>Grupo</th>
+        <td>{{ competencia.grupo.nombre_corto }}</td>
+      </tr>
+      <tr>
+        <th>Descripción</th>
+        <td>{{ competencia.descripcion }}</td>
+      </tr>
+      {% if rubricas_programa %}
+      <tr>
+        <th>Rúbricas del programa</th>
+        <td>
+            <div class="ui teal small message">Rúbricas en el programa relacionados con esta competencia</div>
+            <div class="ui bulleted list">
+                {% for rubrica in rubricas_programa %}
+                <div class="item>"><a href="{% url 'rubrica_curso' rubrica.id %}"> <i class="search icon blue"></i></a> {{ rubrica.nombre }}</div>
+                {% endfor %}
+            </div>
+        </td>
+      </tr>
+      {% endif %}
+      <tr>
+        <th>Rúbricas en curso</th>
+        <td>
+            <div class="ui brown small message">Rúbricas en cursos del programa relacionados con esta competencia</div>
+            <div class="ui bulleted list">
+                {% for curso, rubricas_curso in rubricas_cursos.items %}
+                <div class="item>">
+                    <div>{{ curso.codigo }}</div>
+                    <div class="list">
+                        {% for rubrica in rubricas_curso %}
+                            <div class="item>">
+                                <a href="{% url 'rubrica_curso' rubrica.id %}"><i class="search icon blue"></i></a>
+                                {{ rubrica.nombre }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+{% endblock %}

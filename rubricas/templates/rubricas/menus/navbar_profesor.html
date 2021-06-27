@@ -1,0 +1,50 @@
+<div class="ui left visible thin vertical inverted sidebar labeled icon menu">
+
+  <a class="item" href="{% url 'home' %}">
+    <i class="home icon"></i>
+    Home
+  </a>
+
+
+  <div class="item">
+    <i class="chalkboard icon"></i>
+   	Secciones  
+
+    <div class="menu">
+      {% for seccion in secciones %}
+      	<a href="{% url 'seccion' seccion.id %}" class="item">{{ seccion.curso.codigo }}: {{ seccion.numero }}</a>
+      {% endfor %}
+        <a href="{% url 'secciones' %}" class="item">Actuales</a>      
+    </div>
+  </div>
+
+
+  <a class="item" href="{% url 'historico_secciones' %}">
+    <i class="landmark icon"></i>
+    Histórico
+  </a>
+
+
+  <a class="item" href="{% url 'programas' %}">
+    <i class="question circle outline icon"></i>
+    Información
+  </a>
+
+   <a class="item">
+     <i class="user icon"></i>
+     Mi Perfil
+   </a>
+   
+   <a class="item" href="{% url 'logout' %}">
+    <i class="door closed icon"></i>
+    Salir
+   </a>   
+
+ </div>
+ 
+<script language='javascript'>
+$('.ui.dropdown')
+  .dropdown()
+;
+</script>      
+

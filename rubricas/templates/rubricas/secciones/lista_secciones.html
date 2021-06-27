@@ -1,0 +1,63 @@
+{% extends "rubricas/base.html" %}
+<!-- Implementación visualizaciones -->
+<!-- Fin Implementación visualizaciones -->
+
+{% block head_title %}
+Secciones
+{% endblock %}
+
+{% block content %}
+
+{% load humanize %}
+
+<p>{{ descripciones }}</p>
+
+<div class="ui divider"></div>
+
+<h1 class="ui header">{{ titulo }}</h1>
+
+
+<div class="ui grid stackable">
+    <div class="column">
+        <div class="ui raised card fluid">
+              <table class="ui striped table">
+              <thead>
+                <tr>
+                  <th>Semestre</th>
+                  <th>Código</th>
+                  <th>Curso</th>
+                  <th>Número sección</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% if historicas %}
+                {% for seccion in historicas %}
+                <tr>
+                  <td>{{ seccion.semestre }}</td>
+                  <td>{{ seccion.curso.codigo }}</td>
+                  <td>{{ seccion.curso.nombre }}</td>
+                  <td>
+                      <a href="{% url 'seccion' seccion.id %}" class="item"><i class="search icon violet"></i></a>
+                      {{ seccion.numero }}
+                  </td>
+                </tr>
+                {% endfor %}
+              {% else %}
+                {% for seccion in secciones %}
+                <tr>
+                  <td>{{ seccion.semestre }}</td>
+                  <td>{{ seccion.curso.codigo }}</td>
+                  <td>{{ seccion.curso.nombre }}</td>
+                  <td>
+                      <a href="{% url 'seccion' seccion.id %}" class="item"><i class="search icon violet"></i></a>
+                      {{ seccion.numero }}
+                  </td>
+                </tr>
+                {% endfor %}
+              {% endif %}
+              </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

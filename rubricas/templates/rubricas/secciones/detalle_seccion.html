@@ -1,0 +1,243 @@
+{% extends "rubricas/base.html" %}
+
+{% block head_title %}
+{{ curso.codigo }}
+{% endblock %}
+
+{% block content %}
+
+{% load humanize %}
+
+<p>Detalles de la sección</p>
+<div class="ui divider"></div>
+
+<h1 class="ui header">{{ seccion.curso.codigo }} <i class="caret right icon"></i> Sección No. {{ seccion.numero }}</h1>
+
+ <table class="ui celled padded table">
+    <tbody>
+      <tr>
+        <th class="">Curso</th>
+        <td>{{ seccion.curso.nombre }}</td>
+        <th>Semestre</th>
+        <td>{{ seccion.semestre }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+<div id="context1">
+    <div class="ui top attached tabular menu">
+      <div class="active item" data-tab="estudiantes">Estudiantes</div>
+      <div class="item" data-tab="calificaciones">Calificaciones</div>
+      <div class="item" data-tab="evaluar">Evaluar</div>
+      <div class="item" data-tab="contenido">Contenido del curso</div>
+    </div>
+    <div class="ui bottom attached active tab segment" data-tab="estudiantes">
+      <table class="ui celled table">
+              <thead>
+                <tr>
+                    <th class="ui center aligned">Login</th>
+                    <th>Nombre</th>
+                    <th class="ui center aligned">Iniciales</th>
+                    <th class="ui center aligned">Acumulado</th>
+                    <th>Último resultado</th>
+                </tr>
+              </thead>
+              <tbody>
+      {% for estudiante in estudiantes %}
+                <tr>
+                    <td class="ui center aligned"><a href="{% url 'estudiante_seccion' estudiante.id seccion.id %}"><i class="search icon blue"></i>{{ estudiante.login }}</a></td>
+                    <td>{{ estudiante.nombre }}</td>
+                    <td class="ui center aligned">{{ estudiante.iniciales }}</td>
+                    <td class="ui center aligned">{{ estudiante.resumen.resultado }}</td>
+                    <td>
+                        {% if estudiante.ultimo_resultado %}
+                            <a href="{% url 'rubrica_curso' 0 0 %}"><i class="search icon blue"></i></a>
+                            {{ estudiante.ultimo_resultado.resultado}} en '{{ estudiante.ultimo_resultado.item.nombre }}'
+                        {% endif %}
+                    </td>
+                </tr>
+      {% endfor %}
+              </tbody>
+            </table>
+    </div>
+    <div class="ui bottom attached tab segment" data-tab="calificaciones">
+            <table class="ui celled table">
+              <thead>
+                <tr>
+                    <th>Ítem de Calificación</th>
+                    <th class="ui center aligned">Peso</th>
+                    <th>Rúbrica asociada</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for item in items %}
+                    <tr>
+                        <td>
+                            {{ item.nombre }}
+                        </td>
+                        <td class="ui center aligned">
+                            {{ item.peso|floatformat }}%
+                        </td>
+                        <td>
+                            <a href="{% url 'rubrica_curso' item.rubrica.id seccion.curso.id %}"><i class="search icon blue"></i></a>{{ item.rubrica.nombre }}
+                        </td>
+                    </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+    </div>
+
+
+    <div class="ui bottom attached tab segment" data-tab="evaluar">
+
+        <form class="ui form" action="{% url 'evaluar_estudiante' %}">
+          <div class="field">
+              <label>Estudiante</label>
+              <div class="ui selection dropdown">
+                  <input type="hidden" name="gender">
+                  <i class="dropdown icon"></i>
+                  <div class="default text"></div>
+                  <div class="menu">
+                    {% for estudiante in estudiantes %}
+                      <div class="item" data-value="1">{{ estudiante.nombre }}</div>
+                    {% endfor %}
+                  </div>
+              </div>
+          </div>
+          <div class="field">
+              <label>Evaluacion</label>
+              <div class="ui selection dropdown">
+                  <input type="hidden" name="gender">
+                  <i class="dropdown icon"></i>
+                  <div class="default text"></div>
+                  <div class="menu">
+                      {% for item in items %}
+                      <div class="item" data-value="1">{{ item.nombre }}</div>
+                      {% endfor %}
+                  </div>
+              </div>
+          </div>
+          <button class="ui violet button" type="submit">Evaluar</button>
+        </form>
+
+    </div>
+    <div class="ui bottom attached tab segment" data-tab="contenido">
+
+  <table class="ui celled padded table">
+    <tbody>
+      <tr>
+        <th>Descripción</th>
+        <td>{{ seccion.curso.descripcion }}</td>
+      </tr>
+      <tr>
+        <td colspan="2">
+           <div class="ui styled fluid accordion">
+            <div class="title">
+              <i class="blue icon sitemap"> </i>
+              <i class="dropdown icon"></i>
+              APEs declaradas
+            </div>
+            <div class="ui content list collapsing">
+                  {% for ape in seccion.curso.apes.all %}
+                  <div class="item">
+                    <div class="header">
+                    {{ape.sigla}}
+                    </div>
+                    <div class="left aligned content">
+                      {{ape.nombre_largo}}
+                    </div>
+                  </div>
+                  {% endfor %}
+
+            </div>
+          </div>
+        </tr>
+        <tr>
+        <td colspan="2">
+           <div class="ui styled fluid accordion">
+            <div class="title">
+              <i class="pink icon project diagram"> </i>
+              <i class="dropdown icon"></i>
+              Competencias declaradas
+            </div>
+            <div class="ui content list collapsing">
+                  {% regroup seccion.curso.competencias.all by grupo as competencias_rubricas %}
+                  {% for grupo in competencias_rubricas %}
+                   <div class="item">
+                      <div class="header">
+                      {{ grupo.grouper.sigla }} - {{ grupo.grouper.nombre_corto }}
+                      </div>
+                      {% for competencia in grupo.list %}
+                      <div class="left aligned content">
+                         {{competencia.sigla}} - {{competencia.nombre}}
+                      </div>
+                      {% endfor %}
+                  </div>
+                  {% endfor %}
+                  </div>
+            </div>
+          </div>
+        </tr>
+
+        <tr>
+        <td colspan="2">
+           <div class="ui styled fluid accordion">
+            <div class="title">
+              <i class="green icon virus"> </i>
+              <i class="dropdown icon"></i>
+              Patologías
+            </div>
+            <div class="ui content list collapsing">
+                    {% for pat in seccion.curso.patologias.all %}
+                  <div class="item left aligned content">
+                       <strong>{{pat.codigo}} </strong>: <span>{{pat.nombre}}</span>
+                    </div>
+                    {% endfor %}
+                  </div>
+            </div>
+          </div>
+        </tr>
+
+       <tr>
+        <td colspan="2">
+           <div class="ui styled fluid accordion">
+            <div class="title">
+              <i class="black icon cut"> </i>
+              <i class="dropdown icon"></i>
+              Procedimientos
+            </div>
+            <div class="ui content list collapsing">
+                    {% for proc in seccion.curso.procedimientos.all %}
+                  <div class="item left aligned content">
+                       <strong>{{proc.codigo}} </strong>: <span>{{proc.nombre}}</span>
+                    </div>
+                    {% endfor %}
+                  </div>
+            </div>
+          </div>
+        </tr>
+    </tbody>
+  </table>
+
+    </div>
+</div>
+
+
+  <script language='javascript'>
+      $(document).ready(function() {
+        $('.ui.accordion').accordion()
+
+        $('.toggle').click(function() {
+          $('.ui.accordion').accordion('toggle', 1);
+        });
+
+        $('#context1 .menu .item')
+          .tab({
+              context: $('#context1')
+        });
+        $('.selection.dropdown').dropdown();
+      });
+
+  </script>
+
+{% endblock %}

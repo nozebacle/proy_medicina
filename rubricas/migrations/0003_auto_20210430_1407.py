@@ -7,64 +7,97 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('rubricas', '0002_auto_20210430_1346'),
+        ("rubricas", "0002_auto_20210430_1346"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='rubrica',
-            name='cursos',
+            model_name="rubrica",
+            name="cursos",
         ),
         migrations.RemoveField(
-            model_name='rubrica',
-            name='programa',
+            model_name="rubrica",
+            name="programa",
         ),
         migrations.RemoveField(
-            model_name='rubrica',
-            name='secciones',
+            model_name="rubrica",
+            name="secciones",
         ),
         migrations.AlterField(
-            model_name='curso',
-            name='apes',
-            field=models.ManyToManyField(to='rubricas.APE'),
+            model_name="curso",
+            name="apes",
+            field=models.ManyToManyField(to="rubricas.APE"),
         ),
         migrations.AlterField(
-            model_name='curso',
-            name='competencias',
-            field=models.ManyToManyField(to='rubricas.Competencia'),
+            model_name="curso",
+            name="competencias",
+            field=models.ManyToManyField(to="rubricas.Competencia"),
         ),
         migrations.AlterField(
-            model_name='curso',
-            name='patologias',
-            field=models.ManyToManyField(to='rubricas.Patologia'),
+            model_name="curso",
+            name="patologias",
+            field=models.ManyToManyField(to="rubricas.Patologia"),
         ),
         migrations.AlterField(
-            model_name='curso',
-            name='procedimientos',
-            field=models.ManyToManyField(to='rubricas.Procedimiento'),
+            model_name="curso",
+            name="procedimientos",
+            field=models.ManyToManyField(to="rubricas.Procedimiento"),
         ),
         migrations.CreateModel(
-            name='RubricaSeccion',
+            name="RubricaSeccion",
             fields=[
-                ('rubrica_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='rubricas.rubrica')),
-                ('secciones', models.ManyToManyField(blank=True, to='rubricas.Seccion')),
+                (
+                    "rubrica_ptr",
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to="rubricas.rubrica",
+                    ),
+                ),
+                ("secciones", models.ManyToManyField(blank=True, to="rubricas.Seccion")),
             ],
-            bases=('rubricas.rubrica',),
+            bases=("rubricas.rubrica",),
         ),
         migrations.CreateModel(
-            name='RubricaPrograma',
+            name="RubricaPrograma",
             fields=[
-                ('rubrica_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='rubricas.rubrica')),
-                ('programa', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='rubricas.programa')),
+                (
+                    "rubrica_ptr",
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to="rubricas.rubrica",
+                    ),
+                ),
+                (
+                    "programa",
+                    models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to="rubricas.programa"),
+                ),
             ],
-            bases=('rubricas.rubrica',),
+            bases=("rubricas.rubrica",),
         ),
         migrations.CreateModel(
-            name='RubricaCurso',
+            name="RubricaCurso",
             fields=[
-                ('rubrica_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='rubricas.rubrica')),
-                ('cursos', models.ManyToManyField(blank=True, to='rubricas.Curso')),
+                (
+                    "rubrica_ptr",
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to="rubricas.rubrica",
+                    ),
+                ),
+                ("cursos", models.ManyToManyField(blank=True, to="rubricas.Curso")),
             ],
-            bases=('rubricas.rubrica',),
+            bases=("rubricas.rubrica",),
         ),
     ]

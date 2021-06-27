@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'django_extensions',
     'rubricas',
 ]
 
@@ -83,6 +84,17 @@ ALTERNATIVES = {
     'mario': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'medicina',
+        'USER': 'medicina',
+        'PASSWORD': DB_PASSWORD,
+        'HOST': DB_IP,
+        'OPTIONS': {
+            'init_command': 'SET innodb_strict_mode=1',
+            'charset': 'utf8mb4',
+        }
+    },
+    'test_mario': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'pruebas_medicina',
         'USER': 'medicina',
         'PASSWORD': DB_PASSWORD,
         'HOST': DB_IP,
@@ -153,3 +165,13 @@ STATIC_ROOT = os.path.join(LOCAL_STATICFILES_CDN_PATH, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
+
+SHELL_PLUS_IMPORTS = [
+    'import importlib as imp',
+    'import rubricas.test_data.data_apes as da',
+    'import rubricas.test_data.data_competencias as dc',
+    'import rubricas.test_data.data_rubricas as dr',
+    'import rubricas.test_data.data_secciones as ds',
+    'import rubricas.test_data.data_temas as dt'
+]
+

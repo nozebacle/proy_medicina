@@ -9,13 +9,12 @@
     <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" />
 
     <!-- Semantic-UI -->
-    <script
-      src="https://code.jquery.com/jquery-3.1.1.min.js"
-      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-      crossorigin="anonymous"></script>
-    <script src="{% static 'fomanticui/semantic.min.js' %}"></script>
 
-    <link rel="stylesheet" type="text/css" href="{% static 'fomanticui/semantic.min.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.js"></script>
+
+
 
     <!-- Estilo del sitio -->
     <link rel="stylesheet" href="{% static 'dashboard/style.css' %}">
@@ -24,19 +23,31 @@
 
     <title>{% block head_title %} Replace this title {% endblock %}  </title>
   </head>
-  <body>
+  <body class="pushable">
 
         {% include menu %}
-
         <div class="pusher">
 
-        <div class="ui Site-content main container">
+        <div class="ui main fluid container">
 		{% block content%}
            Replace this ....
-        {% endblock %} 
+        {% endblock %}
         </div>
         </div>
-        
+
+
+  <div class="Site-footer ui inverted footer black segment">
+    <div class="ui container">
+      <i class="large python mark icon"></i>
+      <div class="ui small horizontal list">
+        <a class="item" style="color: white;" href="/contactenos/">Cont&aacute;ctenos (1.0.1/29ba1bf)</a>
+      </div>
+      <div class="ui small  right floated horizontal list">
+        <i class="item">Universidad de los Andes | Facultad de Medicina</i>
+      </div>
+    </div>
+  </div>
+
 
   </body>
 </html>
